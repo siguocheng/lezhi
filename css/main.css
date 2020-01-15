@@ -1,0 +1,92 @@
+body {
+	font: 12px/140% Arial, "宋体", Helvetica, sans-serif, Verdana;
+	color: #5a5a5a;
+	margin: 0;
+	background: #FFF;
+}
+
+html,
+body {
+	-webkit-text-size-adjust: none;
+}
+
+ol,
+ul,
+li {
+	list-style-type: none;
+}
+
+div,
+p,
+img,
+ul,
+ol,
+li,
+form,
+input,
+label,
+span,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	display: list-item;
+	text-align: -webkit-match-parent;
+}
+
+.cssmenu>ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	float: right;
+	font-weight: normal;
+}
+
+.cssmenu {
+
+	overflow: hidden;
+}
+
+.cssmenu>ul>li {
+	float: left;
+	display: block;
+	margin: 0 20px;
+	height: 78px;
+	line-height: 78px;
+	border-bottom: 2px solid rgb(0, 0, 0, 0);
+}
+
+.cssmenu>ul>li>a.ahover {
+	color: #333333;
+	text-align: center;
+	font-family: arial;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-family: Microsoft YaHei;
+	font-size: 15px;
+	text-decoration: none;
+
+}
+
+.cssmenu>ul>li>a.hover {
+	font-style: normal;
+	font-family: Microsoft YaHei;
+	font-size: 15px;
+	color: #019966;
+	text-decoration: none;
+
+}
+a {
+	text-decoration: none;
+}
