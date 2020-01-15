@@ -42,7 +42,13 @@
 					$(this).css("background-color", "white");
 					$(this).find("a").attr("class", "hover");
 				});
-					
+				
+				$("#txtSearch").focus(function(){
+					$("#txtSearch").val('');
+				}).blur(function() {
+					$("#txtSearch").val('请输入产品关键字');
+				})
+				$('#menu1').navfix(0,999);
 			});
 		</script>
 	</head>
@@ -59,9 +65,9 @@
 				</div>
 				<div id="menu" class="cssmenu" style="float:right">
 					<ul>
-						<li><a href="index.html" class="hover">主页</a></li>
+						<li><a href="index.html" class="hover">网站主页</a></li>
 						<li><a href="productList.html" class="hover">产品中心</a></li>
-						<li><a href="product.jsp" class="hover">新闻</a></li>
+						<li><a href="product.jsp" class="hover">新闻资讯</a></li>
 						<li><a href="about.html" class="hover">企业介绍</a></li>
 						<li><a href="contact.html" class="hover">联系我们</a></li>
 					</ul>
@@ -87,9 +93,11 @@
 				PRODUCT  CENTER
 			</div>
 			<div style="margin: 0 auto;width: 1200px;margin-bottom: 60px;">
-				<div class="searchbox_btn">搜索</div>
+				<div>
+					<input id="btnSearch" type="button" class="searchbox_btn" value="搜索"/>
+				</div>
 				<div style="float: right;">
-					<input type="button" value="请输入产品关键字" style="text-align: left;color: #666; padding-left: 5px;padding-right: 5px;background-color: #ffffff;width:300px;font-size: 12px;font-family:Microsoft YaHei;line-height: 36px;border:#156cfd 2px solid;"/>
+					<input id="txtSearch" type="text" value="请输入产品关键字" style="text-align: left;color: #666; padding-left: 5px;padding-right: 5px;background-color: #ffffff;width:300px;font-size: 12px;font-family:Microsoft YaHei;line-height: 36px;border:#156cfd 2px solid;"/>
 				</div>
 				
 			</div>
