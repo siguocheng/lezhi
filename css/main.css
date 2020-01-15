@@ -53,21 +53,23 @@ li {
 }
 
 .cssmenu {
-
+	margin-top:20px;
 	overflow: hidden;
 }
 
 .cssmenu>ul>li {
 	float: left;
 	display: block;
-	margin: 0 20px;
-	height: 78px;
-	line-height: 78px;
+	margin: 0 10px;
+	height: 40px;
+	line-height: 40px;
 	border-bottom: 2px solid rgb(0, 0, 0, 0);
+	width:100px;
+	text-align: center;
 }
 
 .cssmenu>ul>li>a.ahover {
-	color: #333333;
+	color: white;
 	text-align: center;
 	font-family: arial;
 	font-size: 14px;
@@ -76,7 +78,6 @@ li {
 	font-family: Microsoft YaHei;
 	font-size: 15px;
 	text-decoration: none;
-
 }
 
 .cssmenu>ul>li>a.hover {
@@ -89,4 +90,21 @@ li {
 }
 a {
 	text-decoration: none;
+}
+strong{
+	font-weight: bold;
+}
+.searchbox_btn {
+    background: #156cfd;
+    font-family: Microsoft YaHei;
+    font-weight: normal;
+    border: #fff 0px solid;
+    float: right;
+    width: 50px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
 }
