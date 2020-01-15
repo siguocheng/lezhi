@@ -10,10 +10,15 @@
 		<script src="js/jquery-migrate-1.2.1.js"></script>
 		<script src="js/navfix.js"></script>
 		<script src="js/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<link href="css/owl/owl.carousel.css" rel="stylesheet">
 		<link href="css/owl/owl.theme.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="shortcut icon" href="img/zhele.ico" type="image/x-icon">
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 		<title>产品中心</title>
 		<style type="text/css">
 			.product {
@@ -72,86 +77,111 @@
 				<input type="text"  />
 			</div>
 		</div> -->
-		<div id="div1" style="margin-top: 50px;  font-size:30px;font-family:微软雅黑;color:#156cfd;height: 30px;   text-align: center;">
-			<strong>产品中心</strong>
-		</div>
-		<!-- <div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
-		</div> -->
-		<div style="margin-top: 10px;  font-size:14px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;   text-align: center;">
-			PRODUCT  CENTER
-		</div>
-		<div style="margin: 0 auto;width: 1200px;margin-bottom: 60px;">
-			<div class="searchbox_btn">搜索</div>
-			<div style="float: right;">
-				<input type="button" value="请输入产品关键字" style="text-align: left;color: #666; padding-left: 5px;padding-right: 5px;background-color: #ffffff;width:300px;font-size: 12px;font-family:Microsoft YaHei;line-height: 36px;border:#156cfd 2px solid;"/>
+		<div id="productList">
+			<div id="div1" style="margin-top: 50px;  font-size:30px;font-family:微软雅黑;color:#156cfd;height: 30px;   text-align: center;">
+				<strong>产品中心</strong>
 			</div>
-			
-		</div>
-		<div id="product" style="margin:0 auto;width: 1200px;height:900px">
-			<div class="product">
-				<a href="product_detail.html">
-					<img id="img1" src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
+			<!-- <div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
+			</div> -->
+			<div style="margin-top: 10px;  font-size:14px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;   text-align: center;">
+				PRODUCT  CENTER
 			</div>
-			<div class="product">
-				<a href="product_detail.html">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
+			<div style="margin: 0 auto;width: 1200px;margin-bottom: 60px;">
+				<div class="searchbox_btn">搜索</div>
+				<div style="float: right;">
+					<input type="button" value="请输入产品关键字" style="text-align: left;color: #666; padding-left: 5px;padding-right: 5px;background-color: #ffffff;width:300px;font-size: 12px;font-family:Microsoft YaHei;line-height: 36px;border:#156cfd 2px solid;"/>
+				</div>
+				
 			</div>
-			<div class="product">
-				<a href="product_detail.html">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
+			<div id="product" style="margin:0 auto;width: 1200px;height:1050px">
+				<div class="product">
+					<a href="product_detail.html">
+						<img id="img1" src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
+				</div>
+				<div class="product">
+					<a href="product_detail.html">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
+				</div>
+				<div class="product">
+					<a href="product_detail.html">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
+				</div>
+				<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
+				<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
+				<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
+				<div class="product">
+					<a href="product_detail.html">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
+				</div>
+				<div class="product">
+					<a href="product_detail.html">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
+				</div>
+				<div class="product">
+					<a href="product_detail.html">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
+				</div>
+				<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
+				<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
+				<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
+				<div class="product">
+					<a href="">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
+				</div>
+				<div class="product">
+					<a href="product_detail.html">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
+				</div>
+				<div class="product">
+					<a href="product_detail.html">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
+				</div>
+				<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
+				<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
+				<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
 			</div>
-			<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-			<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-			<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-			<div class="product">
-				<a href="product_detail.html">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
+			<div id="page" style="margin:0 auto;width:1200px;text-align: center;">
+				<el-pagination
+				  background
+				  layout="prev, pager, next"
+				  :current-page.sync="page" :total="total" :page-size="pageSize" @current-change="current_change">
+				</el-pagination>
 			</div>
-			<div class="product">
-				<a href="product_detail.html">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
-			</div>
-			<div class="product">
-				<a href="product_detail.html">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
-			</div>
-			<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-			<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-			<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-			<div class="product">
-				<a href="">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
-			</div>
-			<div class="product">
-				<a href="product_detail.html">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
-			</div>
-			<div class="product">
-				<a href="product_detail.html">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
-			</div>
-			<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-			<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-			<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
 		</div>
 		<script type="text/javascript">
 			var app = new Vue({
-				el: '#div1',
+				el: '#productList',
 				data: {
 					todos: [
 					      { text: '汽车线束' },
 					      { text: '家电线束' },
 					      { text: '医疗线束' }
-					    ]
+					    ],
+						page:2,
+						total:20,
+						pageSize:10,
+				},
+				methods: {
+					current_change(){
+						axios.post("http://localhost:9066/iot/getToken", 
+								{
+						          username: "water",
+						          password: "123456"
+						        }).then((response) => {
+						          console.log("返回的值"+response.data)
+						        }).catch((response) => {
+						          console.log("错误"+response)
+						        });
+					}
 				}
 			});
 		</script>
