@@ -53,7 +53,7 @@ li {
 }
 
 .cssmenu {
-	margin-top:20px;
+	margin-top: 20px;
 	overflow: hidden;
 }
 
@@ -64,8 +64,9 @@ li {
 	height: 40px;
 	line-height: 40px;
 	border-bottom: 2px solid rgb(0, 0, 0, 0);
-	width:100px;
+	width: 100px;
 	text-align: center;
+	border-radius: 30px;
 }
 
 .cssmenu>ul>li>a.ahover {
@@ -88,24 +89,59 @@ li {
 	text-decoration: none;
 
 }
+.title{
+	margin-top: 20px;  font-size:30px;font-family:微软雅黑;color:#516dff;height: 30px;   text-align: center;
+}
 a {
 	text-decoration: none;
 }
-strong{
+
+strong {
 	font-weight: bold;
 }
+
 .searchbox_btn {
-    background: #156cfd;
-    font-family: Microsoft YaHei;
-    font-weight: normal;
-    border: #fff 0px solid;
-    float: right;
-    width: 50px;
-    height: 40px;
-    line-height: 40px;
-    cursor: pointer;
-    color: #fff;
-    font-size: 14px;
-    text-align: center;
+	background: #156cfd;
+	font-family: Microsoft YaHei;
+	font-weight: normal;
+	border: #fff 0px solid;
+	float: right;
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
 	position: relative;
+}
+
+#advantage .content {
+	background-color: #0037C0;
+	width: 285px;
+	height: 186px;
+	float: left;
+	border-radius: 20px;
+	margin: 10px 10px 10px 0px;
+	text-align: center;
+	line-height: 186px;
+	color: #FFFFFF;
+	font-size: 18px;
+	font-family: 微软雅黑;
+}
+#contactPic .pic{
+	float: left;
+	width: 300px;
+	text-align: center;
+	margin-top: 20px;
+}
+#contactPic .content{
+	font-size: 17px;
+	text-align: center;
+	width: 300px;
+	height: 50px;
+	line-height: 22px;
+	float: left;
+	margin-top: 20px;
+	color: #FFFFFF;
 }

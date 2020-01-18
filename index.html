@@ -233,19 +233,20 @@
 					console.log("滚动高度:" + scroH);
 					console.log("可见高度 :" + viewH);
 					console.log("内容高度:" + contentH);
-					if (scroH > 100) { //距离顶部大于100px时
-						// $("#div1").fadeToggle("slow");
-						$("#div1").animate({"margin-top":"20px"},1000) 
-					}
-					if (scroH >=800){
-						$("#div2").animate({"margin-top":"20px"},1000) 
-					}
-					if (contentH - (scroH + viewH) <= 100) { //距离底部高度小于100px
+					// if (scroH > 100) { //距离顶部大于100px时
+					// 	// $("#div1").fadeToggle("slow");
+					// 	$("#div1").animate({"margin-top":"20px"},1000) 
+					// }
+					// if (scroH >=800){
+					// 	$("#div2").animate({"margin-top":"20px"},1000) 
+					// 	$("#advantage").animate({"margin-top":"20px"},1000) 
+					// }
+					// if (contentH - (scroH + viewH) <= 100) { //距离底部高度小于100px
 
-					}
-					if (contentH = (scroH + viewH)) { //滚动条滑到底部啦
+					// }
+					// if (contentH = (scroH + viewH)) { //滚动条滑到底部啦
 
-					}
+					// }
 
 				});
 
@@ -263,7 +264,7 @@
 					</a>
 				</div>
 				<div style="float: left;margin-left: 20px;margin-top:8px">
-					<span style="line-height: 70px;font-size: 20px;"><strong>浙江乐志电子有限公司</strong></span>
+					<span style="line-height: 70px;font-size: 20px;color:#156cfd;font-family:微软雅黑;"><strong>浙江乐志电子有限公司</strong></span>
 				</div>
 				<div id="menu" class="cssmenu" style="float:right">
 					<ul>
@@ -290,19 +291,19 @@
 				 width="20" height="37"></a>
 		</div>
 
-		<div id="div1" style="margin-top: 500px;  font-size:30px;font-family:微软雅黑;color:#156cfd;height: 30px;   text-align: center;">
+		<div id="div1" class="title">
 			<strong>推荐产品</strong>
 		</div>
-		<!-- <div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
-		</div> -->
-		<div style="margin-top: 10px;  font-size:14px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;   text-align: center;">
+		<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
+		</div>
+		<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;   text-align: center;">
 			Product series
 		</div>
-		<div style="margin:5px auto;width: 700px;font-size: 13px;">
+		<div style="margin:5px auto;width: 1200px;font-size: 15px;text-align: center;">
 			浙江乐志电子有限公司是一家拥有完整科学的质量管理体系 汽车线束、家电线束、医疗线束等产品的专业生产加工的公司
 		</div>
 		
-		<div id="product" style="margin:0 auto;width: 1200px;height:900px">
+		<div id="product" style="margin:0 auto;width: 1200px;height:600px">
 			<div class="product">
 				<a href="">
 					<img id="img1" src="img/pr001.jpeg" width="350px" height="250px" />
@@ -333,24 +334,25 @@
 					<img src="img/pr001.jpeg" width="350px" height="250px" />
 				</a>
 			</div>
-			<div class="product">
-				<a href="">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
-			</div>
-			<div class="product">
-				<a href="">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
-			</div>
-			<div class="product">
-				<a href="">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
-			</div>
 		</div>
-		<div id="div2" style="margin-top: 500px;  font-size:24px;font-family:微软雅黑;color:#000000;height: 30px;   text-align: center;">
-			合作伙伴
+		<div id="advantage" style="margin: 0 auto; width: 1200px;">
+			<div  class="title">
+				<strong>我们的优势</strong>
+			</div>
+			<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px; ">
+			</div>
+			<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;text-align: center;">
+				Our Advantages
+			</div>
+			
+			<div class="content">多年的行业经验</div>
+			<div class="content" style="background-color: #769DFF;">产品质量过硬</div>
+			<div class="content">良好的口碑</div>
+			<div class="content" style="background-color: #769DFF;">专业的售后服务</div>
+		 </div>
+		<!-- 合作伙伴-->
+		<div id="div2" class="title" style="margin-top: 250px;">
+			<strong>合作伙伴</strong>
 		</div>
 		<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
 		</div>
@@ -427,9 +429,30 @@
 				<img class="mr_frBtnR next" src="img/client/sprite-r.png" />
 			</div>
 		</div>
-
-		<div id="footer" style="background-color: rgb(13, 101, 191);height: 250px;">
-
+		<!-- 联系我们 -->
+		<!-- <div id="contact" class="title">
+			<strong>联系我们</strong>
+		</div>
+		<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
+		</div>
+		<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;   text-align: center;">
+			Contact Us
+		</div> -->
+		<div style="width: 100%;background-color: #516dff;">
+			<div id="contactPic" style="margin: 0 auto; width: 1200px;font-family: 微软雅黑;height: 200px;">
+				<div class="pic"><img src="img/pic/phone.png" width="130px" height="130px"/></div>
+				
+				<div class="pic"><img src="img/pic/address.png" width="130px" height="130px"/></div>
+				<div class="pic"><img src="img/pic/mail.png" width="130px" height="130px"/></div>
+				<div class="pic"><img src="img/pic/fax.png" width="130px" height="130px"/></div>
+				<div class="content">电话：王建丽 13738068166</div>
+				<div class="content">地址：杭州市余杭区瓶窑镇长命村富豪路7号1号楼3单元4-1室</div>
+				<div class="content">邮箱：13738068166@163.com</div>
+				<div class="content">传真：0571-87425558</div>
+			</div>
+			<div style="margin: 0 auto;width: 1200px;font-size: 15px;text-align: center;color: #FFFFFF;line-height: 50px;">
+				Copyright © 2019-2020,www.xxxxxx.com,All rights reserved  沪ICP备XXXXXX号
+			</div>
 		</div>
 	</body>
 </html>

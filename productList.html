@@ -46,7 +46,11 @@
 				$("#txtSearch").focus(function(){
 					$("#txtSearch").val('');
 				}).blur(function() {
-					$("#txtSearch").val('请输入产品关键字');
+			
+					if($("#txtSearch").val() == '') {
+						$("#txtSearch").val('请输入产品关键字');
+					}
+					
 				})
 				$('#menu1').navfix(0,999);
 			});
@@ -87,10 +91,10 @@
 			<div id="div1" style="margin-top: 50px;  font-size:30px;font-family:微软雅黑;color:#156cfd;height: 30px;   text-align: center;">
 				<strong>产品中心</strong>
 			</div>
-			<!-- <div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
-			</div> -->
+			<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
+			</div>
 			<div style="margin-top: 10px;  font-size:14px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;   text-align: center;">
-				PRODUCT  CENTER
+				Product Center
 			</div>
 			<div style="margin: 0 auto;width: 1200px;margin-bottom: 60px;">
 				<div>
@@ -163,6 +167,22 @@
 				  layout="prev, pager, next"
 				  :current-page.sync="page" :total="total" :page-size="pageSize" @current-change="current_change">
 				</el-pagination>
+			</div>
+		</div>
+		<div style="width: 100%;background-color: #516dff;">
+			<div id="contactPic" style="margin: 0 auto; width: 1200px;font-family: 微软雅黑;height: 200px;">
+				<div class="pic"><img src="img/pic/phone.png" width="130px" height="130px"/></div>
+				
+				<div class="pic"><img src="img/pic/address.png" width="130px" height="130px"/></div>
+				<div class="pic"><img src="img/pic/mail.png" width="130px" height="130px"/></div>
+				<div class="pic"><img src="img/pic/fax.png" width="130px" height="130px"/></div>
+				<div class="content">电话：王建丽 13738068166</div>
+				<div class="content">地址：杭州市余杭区瓶窑镇长命村富豪路7号1号楼3单元4-1室</div>
+				<div class="content">邮箱：13738068166@163.com</div>
+				<div class="content">传真：0571-87425558</div>
+			</div>
+			<div style="margin: 0 auto;width: 1200px;font-size: 15px;text-align: center;color: #FFFFFF;line-height: 50px;">
+				Copyright © 2019-2020,www.xxxxxx.com,All rights reserved  沪ICP备XXXXXX号
 			</div>
 		</div>
 		<script type="text/javascript">
