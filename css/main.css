@@ -43,7 +43,10 @@ li {
 	display: list-item;
 	text-align: -webkit-match-parent;
 }
-
+.container{
+	margin: 0 auto;
+	width: 1200px;
+}
 .cssmenu>ul {
 	list-style-type: none;
 	margin: 0;
