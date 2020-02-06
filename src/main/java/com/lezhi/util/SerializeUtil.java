@@ -1,9 +1,3 @@
-/**
- * 名称: SerializeUtil.java
- * 描述: 
- * @author shengling.guan
- * date: 2018年5月28日 下午3:39:39
- */
 package com.lezhi.util;
 
 import java.io.ByteArrayInputStream;

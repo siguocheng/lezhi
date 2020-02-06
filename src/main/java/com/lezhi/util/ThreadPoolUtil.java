@@ -1,9 +1,3 @@
-/**
- * 名称: ThreadPool.java
- * 描述: 
- * @author shengling.guan
- * date: 2018年9月13日 下午12:07:59
- */
 package com.lezhi.util;
 
 import java.util.concurrent.ExecutorService;
@@ -14,12 +8,6 @@ import java.util.concurrent.TimeUnit;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
-/**
- * @ClassName: ThreadPool
- * @Description: TODO
- * @author: shengling.guan
- * date: 2018年9月13日 下午12:07:59
- */
 public class ThreadPoolUtil {
 	
 	private ThreadFactory namedThreadFactory;

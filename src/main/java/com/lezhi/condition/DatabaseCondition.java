@@ -1,11 +1,4 @@
- /*
-  * Copyright (C), 2018-2018, 杭州物源科技有限公司
-  * FileName: DatabaseCondition
-  * Author:   Charlie
-  * Date:     2018/10/26 11:33
-  * Description: 数据库配置启用条件类
-  */
- package com.lezhi.condition;
+package com.lezhi.condition;
 
 
  import org.springframework.context.annotation.Condition;
@@ -35,7 +28,7 @@
 
              if (in != null) {
                  properties.load(in);
-                 String str = properties.getProperty("wuyuan.common.useDatabase").trim();
+                 String str = properties.getProperty("common.useDatabase").trim();
                  if (str==null || "".equals(str)) {
                      useDatabase = Boolean.valueOf(str);
                  }

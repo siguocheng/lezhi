@@ -4,12 +4,7 @@ package com.lezhi;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
-/**
- * @ClassName:
- * @Description:    
- * @author:bing.bai
- * date:
- */
+
 public class SpringBootWar extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {

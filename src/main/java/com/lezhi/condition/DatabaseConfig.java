@@ -1,10 +1,3 @@
-/**
- * 名称: DatabaseConfig.java
- * 描述:
- *
- * @author shengling.guan
- * date: 2018年9月27日 下午2:01:43
- */
 package com.lezhi.condition;
 
 import javax.sql.DataSource;
@@ -24,11 +17,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import com.alibaba.druid.pool.DruidDataSource;
 
-/**
- * @ClassName: DatabaseConfig
- * @Description:
- * @author: shengling.guan date: 2018年9月27日 下午2:01:43
- */
+
 @Configuration
 @PropertySource({ "classpath:database.properties" })
 public class DatabaseConfig {
