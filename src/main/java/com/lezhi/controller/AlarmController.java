@@ -10,6 +10,7 @@ package com.lezhi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,11 +18,12 @@ import com.lezhi.service.AlarmService;
 
 
 @RestController
+@RequestMapping(value = "/alarm")
 public class AlarmController {
 	@Autowired
 	private AlarmService alarmService;
 
-	@PostMapping(value="test")
+	@PostMapping(value="test1")
 	public String test (@RequestBody String params) {
 		return alarmService.test();
 	}

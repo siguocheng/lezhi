@@ -3,7 +3,7 @@
 <mapper namespace="com.lezhi.dao.TestDao">
 
     <select id="test" resultType="String">
-		SELECT  imei
-		from md_dtu where id=12
+		SELECT  name
+		from user where id=1
 	</select>
 </mapper>
