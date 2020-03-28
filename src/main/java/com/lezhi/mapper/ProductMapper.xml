@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lezhi.dao.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.lezhi.entity.Product">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="product_type" jdbcType="INTEGER" property="productType" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_title" jdbcType="VARCHAR" property="productTitle" />
+    <result column="product_pic" jdbcType="VARCHAR" property="productPic" />
+    <result column="product_pic1" jdbcType="VARCHAR" property="productPic1" />
+    <result column="product_pic2" jdbcType="VARCHAR" property="productPic2" />
+    <result column="product_pic3" jdbcType="VARCHAR" property="productPic3" />
+    <result column="product_pic4" jdbcType="VARCHAR" property="productPic4" />
+    <result column="product_detail" jdbcType="VARCHAR" property="productDetail" />
+    <result column="is_deleted" jdbcType="VARCHAR" property="isDeleted" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, product_type, product_name, product_title, product_pic, product_pic1, product_pic2, 
+    product_pic3, product_pic4, product_detail, is_deleted, gmt_create, gmt_modified
+  </sql>
+  <select id="listProduct" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from product
+    where is_deleted=1
+    <if test="productName != null">
+    	and product_name = #{productName}
+    </if>
+    <if test="productTitle != null">
+    	and product_title = #{productTitle}
+    </if>
+    limit #{startRow},#{pageSize};
+  </select>
+  
+  <select id="countProduct" resultType="int">
+  	select 
+    	count(*)
+    from product
+    where is_deleted=1
+    <if test="productName != null">
+    	and product_name = #{productName}
+    </if>
+    <if test="productTitle != null">
+    	and product_title = #{productTitle}
+    </if>
+  </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lezhi.entity.Product">
+    insert into product (id, product_type, product_name, 
+      product_title, product_pic, product_pic1, 
+      product_pic2, product_pic3, product_pic4, 
+      product_detail, is_deleted, gmt_create, 
+      gmt_modified)
+    values (#{id,jdbcType=INTEGER}, #{productType,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, 
+      #{productTitle,jdbcType=VARCHAR}, #{productPic,jdbcType=VARCHAR}, #{productPic1,jdbcType=VARCHAR}, 
+      #{productPic2,jdbcType=VARCHAR}, #{productPic3,jdbcType=VARCHAR}, #{productPic4,jdbcType=VARCHAR}, 
+      #{productDetail,jdbcType=VARCHAR}, #{isDeleted,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lezhi.entity.Product">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="productType != null">
+        product_type,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productTitle != null">
+        product_title,
+      </if>
+      <if test="productPic != null">
+        product_pic,
+      </if>
+      <if test="productPic1 != null">
+        product_pic1,
+      </if>
+      <if test="productPic2 != null">
+        product_pic2,
+      </if>
+      <if test="productPic3 != null">
+        product_pic3,
+      </if>
+      <if test="productPic4 != null">
+        product_pic4,
+      </if>
+      <if test="productDetail != null">
+        product_detail,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productType != null">
+        #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productTitle != null">
+        #{productTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic != null">
+        #{productPic,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic1 != null">
+        #{productPic1,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic2 != null">
+        #{productPic2,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic3 != null">
+        #{productPic3,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic4 != null">
+        #{productPic4,jdbcType=VARCHAR},
+      </if>
+      <if test="productDetail != null">
+        #{productDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lezhi.entity.Product">
+    update product
+    <set>
+      <if test="productType != null">
+        product_type = #{productType,jdbcType=INTEGER},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productTitle != null">
+        product_title = #{productTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic != null">
+        product_pic = #{productPic,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic1 != null">
+        product_pic1 = #{productPic1,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic2 != null">
+        product_pic2 = #{productPic2,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic3 != null">
+        product_pic3 = #{productPic3,jdbcType=VARCHAR},
+      </if>
+      <if test="productPic4 != null">
+        product_pic4 = #{productPic4,jdbcType=VARCHAR},
+      </if>
+      <if test="productDetail != null">
+        product_detail = #{productDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lezhi.entity.Product">
+    update product
+    set product_type = #{productType,jdbcType=INTEGER},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_title = #{productTitle,jdbcType=VARCHAR},
+      product_pic = #{productPic,jdbcType=VARCHAR},
+      product_pic1 = #{productPic1,jdbcType=VARCHAR},
+      product_pic2 = #{productPic2,jdbcType=VARCHAR},
+      product_pic3 = #{productPic3,jdbcType=VARCHAR},
+      product_pic4 = #{productPic4,jdbcType=VARCHAR},
+      product_detail = #{productDetail,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

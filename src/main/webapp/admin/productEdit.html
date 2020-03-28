@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>产品编辑</title>
+		<script src="../js/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	</head>
+	<body>
+
+		<div id="product">
+			<div style="width: 500px;">
+				产品名字:<el-input v-model="product.productName" placeholder="请输入内容"></el-input>
+			</div>
+			<div style="width: 500px;">
+				产品标题:
+				<el-input v-model="product.productTitle" placeholder="请输入内容"></el-input>
+			</div>
+			<div>产品其他图片
+				<el-upload action="/lezhi/upload/uploadProjectPicture" list-type="picture-card" :auto-upload="true" :multiple="true" :file-list="fileList"  :on-success="uploadSuccess">
+					<i slot="default" class="el-icon-plus"></i>
+					<div slot="file" slot-scope="{file}">
+						<img class="el-upload-list__item-thumbnail" :src="file.url" alt="">
+						<span class="el-upload-list__item-actions">
+							<span class="el-upload-list__item-preview" @click="handlePictureCardPreview(file)">
+								<i class="el-icon-zoom-in"></i>
+							</span>
+							<span v-if="!disabled" class="el-upload-list__item-delete" @click="handleDownload(file)">
+								<i class="el-icon-download"></i>
+							</span>
+							<span v-if="!disabled" class="el-upload-list__item-delete" @click="handleRemove(file)">
+								<i class="el-icon-delete"></i>
+							</span>
+						</span>
+					</div>
+				</el-upload>
+				<el-dialog :visible.sync="dialogVisible">
+					<img width="100%" :src="dialogImageUrl" alt="">
+				</el-dialog>
+
+			</div>
+			<el-button type="primary" v-on:click="save()">保存</el-button>
+			<el-button type="primary" v-on:click="cancel()">取消</el-button>
+		</div>
+
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#product',
+				data: {
+					id: null,
+					product: {},
+					productName: null,
+					dialogImageUrl: '',
+					dialogVisible: false,
+					disabled: false,
+					fileList: [],
+					
+				},
+				created() {
+
+				},
+				mounted() {
+					var query = window.location.search.substring(1);
+
+					var vars = query.split("&");
+					for (var i = 0; i < vars.length; i++) {
+						var pair = vars[i].split("=");
+						if (pair[0] == 'id') {
+							this.id = pair[1];
+						}
+					}
+					this.getProduct();
+				},
+				methods: {
+					uploadSuccess:function(response, file, fileList){
+						debugger;
+						console.log(fileList);
+						var pic = {};
+						
+						pic.name=response.data.name;
+						pic.url = response.data.url;
+						console.log("picname"  + pic.name);
+						this.fileList.push(pic);
+					},
+					// addFile:function(file,fileList){
+					// 	console.log(1111);
+					// 	this.fileList.push(file);
+					// },
+					save:function(){
+						debugger;
+						
+						this.product.productPic="";
+						this.product.productPic1="";
+						this.product.productPic2="";
+						this.product.productPic3="";
+						this.product.productPic4="";
+					
+						for(var i=0;i<this.fileList.length;i++){
+							if (i==0){
+								this.product.productPic=this.fileList[i].url;
+							} else if (i == 1){
+								this.product.productPic1=this.fileList[i].url;
+							} else if (i == 2){
+								this.product.productPic2=this.fileList[i].url;
+							} else if (i == 3){
+								this.product.productPic3=this.fileList[i].url;
+							} else if (i == 4){
+								this.product.productPic4=this.fileList[i].url;
+							}
+						}
+						console.log(this.product);
+						var url;
+						if (this.id == null){
+							url = "/lezhi/product/insertProduct"
+						} else{
+							url = "/lezhi/product/updateProduct"
+						}
+						axios.post(url, this.product
+						).then((response) => {
+							console.log(response.data);
+							window.location="product.html";
+						}).catch((response) => {
+							console.log("错误" + response)
+						});
+					},
+					cancel:function(){
+						window.location="product.html";
+					},
+					handleRemove(file) {
+
+						for (var i=0;i<this.fileList.length;i++){
+							if (file.uid ==this.fileList[i].uid){
+								this.fileList.splice(i,1);
+							}
+						}
+						console.log(this.fileList);
+					},
+					handlePictureCardPreview(file) {
+						this.dialogImageUrl = file.url;
+						this.dialogVisible = true;
+					},
+					handleDownload(file) {
+						console.log(file);
+					},
+					getProduct() {
+
+						axios.post("/lezhi/product/productDetail", {
+							id: this.id
+						}).then((response) => {
+							var data = response.data.data;
+							if (data != null){
+								this.product = data;
+								
+								if(data.productPic != ''){
+									var pic0 = {};
+									
+									pic0.name="pic0";
+									pic0.url = data.productPic;
+									this.fileList.push(pic0);
+								}
+								
+								if(data.productPic1 != ''){
+									var pic1 = {};
+									
+									pic1.name="pic1";
+									pic1.url = data.productPic1;
+									this.fileList.push(pic1);
+								}
+								
+								if(data.productPic2 != ''){
+									var pic2 = {};
+									pic2.name="pic2";
+									pic2.url = data.productPic2;
+									this.fileList.push(pic2);
+								}
+								
+								if(data.productPic3 != ''){
+									var pic3 = {};
+									pic3.name="pic3";
+									pic3.url = data.productPic3;
+									this.fileList.push(pic3);
+								}
+								
+								if(data.productPic4 != ''){
+									var pic4 = {};
+									pic4.name="pic4";
+									pic4.url = data.productPic4;
+									this.fileList.push(pic4);
+								}
+								console.log(this.fileList);
+							}
+							
+						}).catch((response) => {
+							console.log("错误" + response)
+						});
+					},
+				}
+			});
+		</script>
+
+	</body>
+</html>
