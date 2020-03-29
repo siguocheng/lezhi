@@ -29,11 +29,12 @@ public class UploadFileController {
 	// 上传项目图片
 	@PostMapping("/uploadProjectPicture")
 	public ResultBean<Map<String, Object>> uploadProjectPicture(HttpSession httpSession, HttpServletRequest request,
-			String picType) throws FileNotFoundException {
+			Integer picType) throws FileNotFoundException {
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-		List<MultipartFile> list =multipartRequest.getFiles("file");
+
 		MultipartFile multipartFile = multipartRequest.getFile("file");
 		String fileName = multipartFile.getOriginalFilename();
+		
 		Integer length = fileName.length();
 		String nameEnd = fileName.substring(length - 4, length);
 
@@ -51,7 +52,16 @@ public class UploadFileController {
 		}
 		String pictureName = sdf.format(new Date())  + "_"  + fileName;
 		String url = directory + File.separator + pictureName;
-		String pictureUrl = serverUrl + "/lezhi/projectPic/" + pictureName;
+		String pictureUrl = serverUrl + "/lezhi/otherPic/" + pictureName;
+		// 产品图片
+		if (picType == 1) {
+			pictureUrl = serverUrl + "/lezhi/projectPic/" + pictureName;
+		} 
+		// 大屏图片
+		else if (picType ==2) {
+			pictureUrl = serverUrl + "/lezhi/BigPic/" + pictureName;
+		}
+		
 		File file = new File(url);
 		try (InputStream is = multipartFile.getInputStream(); FileOutputStream fos = new FileOutputStream(file)) {
 

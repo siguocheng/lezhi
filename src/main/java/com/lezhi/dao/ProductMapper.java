@@ -8,37 +8,37 @@ import com.lezhi.entity.Product;
 public interface ProductMapper {
     /**
      *
-     * @mbg.generated 2020-03-20
+     * @mbg.generated 2020-03-28
      */
     int deleteByPrimaryKey(Integer id);
 
     /**
      *
-     * @mbg.generated 2020-03-20
+     * @mbg.generated 2020-03-28
      */
     int insert(Product record);
 
     /**
      *
-     * @mbg.generated 2020-03-20
+     * @mbg.generated 2020-03-28
      */
     int insertSelective(Product record);
 
     /**
      *
-     * @mbg.generated 2020-03-20
+     * @mbg.generated 2020-03-28
      */
     Product selectByPrimaryKey(Integer id);
 
     /**
      *
-     * @mbg.generated 2020-03-20
+     * @mbg.generated 2020-03-28
      */
     int updateByPrimaryKeySelective(Product record);
 
     /**
      *
-     * @mbg.generated 2020-03-20
+     * @mbg.generated 2020-03-28
      */
     int updateByPrimaryKey(Product record);
     

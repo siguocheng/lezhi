@@ -49,8 +49,73 @@ public class ProductDto {
      */
     private String productDetail;
 	
-    
+    /**
+     * null
+     */
+    private String productPicName;
+
+    /**
+     * null
+     */
+    private String productPicName1;
+
+    /**
+     * null
+     */
+    private String productPicName2;
+
+    /**
+     * null
+     */
+    private String productPicName3;
+
+    /**
+     * null
+     */
+    private String productPicName4;
 	
+    
+    
+	public String getProductPicName() {
+		return productPicName;
+	}
+
+	public void setProductPicName(String productPicName) {
+		this.productPicName = productPicName;
+	}
+
+	public String getProductPicName1() {
+		return productPicName1;
+	}
+
+	public void setProductPicName1(String productPicName1) {
+		this.productPicName1 = productPicName1;
+	}
+
+	public String getProductPicName2() {
+		return productPicName2;
+	}
+
+	public void setProductPicName2(String productPicName2) {
+		this.productPicName2 = productPicName2;
+	}
+
+	public String getProductPicName3() {
+		return productPicName3;
+	}
+
+	public void setProductPicName3(String productPicName3) {
+		this.productPicName3 = productPicName3;
+	}
+
+	public String getProductPicName4() {
+		return productPicName4;
+	}
+
+	public void setProductPicName4(String productPicName4) {
+		this.productPicName4 = productPicName4;
+	}
+
 	public Integer getPageSize() {
 		return pageSize;
 	}

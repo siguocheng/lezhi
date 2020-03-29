@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
 	public Integer insertProduct(ProductDto productDto) {
 		Product product=  new Product();
 		BeanUtils.copyProperties(productDto, product);
-		product.setIsDeleted("1");
+		product.setIsDeleted(1);
 		product.setGmtCreate(new Date());
 		return productMapper.insertSelective(product);
 	}
@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
 	public Integer deleteProduct(ProductDto productDto) {
 		Product product=  new Product();
 		product.setId(productDto.getId());
-		product.setIsDeleted("0");
+		product.setIsDeleted(0);
 
 		return productMapper.updateByPrimaryKeySelective(product);
 	}

@@ -4,28 +4,56 @@
 		<meta charset="utf-8">
 		<title></title>
 		<link rel="stylesheet" href="../css/main.css">
+		<script src="../js/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 	</head>
 	<body>
-		<!-- 菜单 -->
-		<div id="menu1" style="margin:0 auto;width: 100%;background-color: white;position:relative; z-index:99; ">
-			<div  style="margin:0 auto;width: 1200px;">
-				<div style="float: left;margin-top: 10px;margin-left: 30px;">
-					<a href=""><img src="img/logo/logo2.jpg" width="200px" height="55px" />
-					</a>
-				</div>
-				<div style="float: left;margin-left: 20px;margin-top:8px">
-					<span style="line-height: 70px;font-size: 30px;color:black;font-family:微软雅黑;">浙江乐志电子有限公司</span>
-				</div>
-				<div id="menu" class="cssmenu" style="float:right">
-					<ul>
-						<li><a href="index.html" class="hover">主页</a></li>
-						<li><a href="productList.html" class="hover">产品中心</a></li>
-						<li><a href="about.html" class="hover">企业介绍</a></li>
-						<li><a href="contact.html" class="hover">联系我们</a></li>
-					</ul>
-				</div>
-			</div>
+		<div id="homepage">
+			<el-upload
+			  class="upload-demo"
+			  action="/lezhi/upload/uploadProjectPicture"
+			  :on-preview="handlePreview"
+			  :on-remove="handleRemove"
+			  :on-success="uploadSuccess"
+			  :multiple="true"
+			  :file-list="fileList"
+			  
+			  list-type="picture">
+			  <el-button size="small" type="primary">点击上传</el-button>
+			  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+			</el-upload>
 		</div>
-		
+		<script>
+			var app = new Vue({
+				el: '#homepage',
+				data:{
+					fileList: [],
+					urls:[]
+					},
+					methods:{
+						handleRemove(file, fileList) {
+							this.fileList = fileList;
+						},
+						handlePreview(file) {
+						  console.log(file);
+						},
+						uploadSuccess(response, file, fileList){
+							var urlObject;
+							url.uid= file.uid;
+							url.url = response.data.url;
+							this.urls.push(url);
+							
+							this.fileList = fileList;
+							console.log(this.urls);
+							console.log(this.fileList);
+						}
+					}
+				});
+		 
+		</script>
 	</body>
 </html>

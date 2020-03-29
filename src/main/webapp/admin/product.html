@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>产品列表</title>
 		<script src="../js/vue.js"></script>
+		<link rel="stylesheet" href="../css/main.css" />
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<!-- 引入样式 -->
 		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
@@ -11,104 +12,116 @@
 		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 	</head>
 	<body>
-		
+
 		<div id="productList">
-			<el-input
-				style="width: 200px;"
-			  placeholder="请输入内容"
-			  v-model="productName"
-			  clearable>
-			</el-input>
-			<el-button type="primary" v-on:click="current_change()">查询</el-button>
-			<el-button type="primary" v-on:click="add()">新增</el-button>
-			<el-table
-			    :data="tableData"
-			    stripe
-			    style="width: 60%">
-			    <el-table-column
-			      prop="productName"
-			      label="产品名字"
-			      width="180">
-			    </el-table-column>
-			    <el-table-column
-			      prop="productType"
-			      label="产品类型"
-			      width="180">
-			    </el-table-column>
-			    <el-table-column
-			      
-			      label="产品图片">
-				  <template slot-scope="scope">
-				    <img :src="scope.row.productPic" width="50px" height="50px"/>
-				  </template>
-			    </el-table-column>
-				<el-table-column
-				  prop="id"
-				  label="id"
-				  v-if ="false">
-				</el-table-column>
-				 <el-table-column
-				      fixed="right"
-				      label="操作"
-				      width="100">
-				      <template slot-scope="scope">
-				        <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-				        <el-button type="text" size="small" >编辑</el-button>
-				      </template>
-				</el-table-column>
-			  </el-table>
-			<div id="page" style="margin:0 auto;margin-bottom: 50px; width:1200px;text-align: center;">
-				<el-pagination
-				  background
-				  layout="prev, pager, next"
-				  :current-page.sync="page" :total="total" :page-size="pageSize" @current-change="current_change">
-				</el-pagination>
+			<div style="float:left;width:20%">
+				<h5>菜单</h5>
+				<el-menu default-active="2" class="el-menu-vertical-demo">
+					<el-menu-item index="1">
+						<i class="el-icon-menu"></i>
+						<span slot="title"><a href="index.html">主页</a></span>
+					</el-menu-item>
+					<el-menu-item index="2">
+						<i class="el-icon-menu"></i>
+						<span slot="title"><a href="product.html">产品</a></span>
+					</el-menu-item>
+					<el-menu-item index="3">
+						<i class="el-icon-menu"></i>
+						<span slot="title"><a href="contact.html">联系我们</a></span>
+					</el-menu-item>
+				</el-menu>
 			</div>
+
+			<div style="float:left;">
+				<el-input style="width: 200px;" placeholder="请输入内容" v-model="productName" clearable>
+				</el-input>
+				<el-button type="primary" v-on:click="current_change()">查询</el-button>
+				<el-button type="primary" v-on:click="add()">新增</el-button>
+				<el-table :data="tableData" stripe style="width: 60%">
+					<el-table-column prop="productName" label="产品名字" width="180">
+					</el-table-column>
+					<el-table-column prop="productType" label="产品类型" width="180">
+					</el-table-column>
+					<el-table-column label="产品图片">
+						<template slot-scope="scope">
+							<img :src="scope.row.productPic" width="50px" height="50px" v-if="scope.row.productPic != ''" />
+						</template>
+					</el-table-column>
+					<el-table-column prop="id" label="id" v-if="false">
+					</el-table-column>
+					<el-table-column fixed="right" label="操作" width="200px">
+						<template slot-scope="scope">
+
+							<el-button type="text" size="small">查看</el-button>
+							<el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
+							<el-button @click="productDel(scope.row)" type="text" size="small">删除</el-button>
+						</template>
+					</el-table-column>
+				</el-table>
+				<div id="page" style="margin:0 auto;margin-bottom: 50px; width:1200px;text-align: center;">
+					<el-pagination background layout="prev, pager, next" :current-page.sync="page" :total="total" :page-size="pageSize"
+					 @current-change="current_change">
+					</el-pagination>
+				</div>
+			</div>
+
 		</div>
 		<script type="text/javascript">
 			var app = new Vue({
 				el: '#productList',
 				data: {
 					tableData: [],
-					productName:null,
-					page:1,
-					total:0,
-					pageSize:10,
+					productName: null,
+					page: 1,
+					total: 0,
+					pageSize: 10,
 				},
-				created(){
-					
+				created() {
+
 				},
 				mounted() {
 					this.page = 1;
 					this.current_change();
 				},
 				methods: {
-					add:function(){
-						window.location="productEdit.html";
+					add: function() {
+						window.location = "productEdit.html";
 					},
-					handleClick(row){
-						
-						window.open("productEdit.html?id="+ row.id);
+					handleClick(row) {
+
+						window.open("productEdit.html?id=" + row.id);
 					},
-					current_change(){
-						
-						axios.post("/lezhi/product/listProduct",
-								{
-						          productName: this.productName,
-						          pageNum: this.page,
-								  pageSize:this.pageSize
-						        }).then((response) => {
-									
-						          this.tableData=response.data.data;
-								  this.total=response.data.total;
-						        }).catch((response) => {
-						          console.log("错误"+response)
-						        });
+					productDel(row) {
+						axios.post("/lezhi/product/deleteProduct", {
+							id: row
+						}).then((response) => {
+
+							if (response.data != nul) {
+								this.$message.warning("删除成功");
+							} else {
+								this.$message.warning("删除失败");
+							}
+						}).catch((response) => {
+							console.log("错误" + response)
+						});
+					},
+					current_change() {
+
+						axios.post("/lezhi/product/listProduct", {
+							productName: this.productName,
+							pageNum: this.page,
+							pageSize: this.pageSize
+						}).then((response) => {
+
+							this.tableData = response.data.data;
+							this.total = response.data.total;
+						}).catch((response) => {
+							console.log("错误" + response)
+						});
 					},
 				}
 			});
-			
 		</script>
-		
+
 	</body>
 </html>
