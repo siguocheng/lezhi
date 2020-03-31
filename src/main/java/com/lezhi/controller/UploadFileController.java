@@ -53,13 +53,18 @@ public class UploadFileController {
 		String pictureName = sdf.format(new Date())  + "_"  + fileName;
 		String url = directory + File.separator + pictureName;
 		String pictureUrl = serverUrl + "/lezhi/otherPic/" + pictureName;
+		
 		// 产品图片
 		if (picType == 1) {
+			pictureUrl = serverUrl + "/lezhi/bigPic/" + pictureName;
+		}
+		// 主页大图片
+		else if (picType == 2) {
+			pictureUrl = serverUrl + "/lezhi/clientPic/" + pictureName;
+		}
+		// 主页客户图片
+		else if (picType == 3) {
 			pictureUrl = serverUrl + "/lezhi/projectPic/" + pictureName;
-		} 
-		// 大屏图片
-		else if (picType ==2) {
-			pictureUrl = serverUrl + "/lezhi/BigPic/" + pictureName;
 		}
 		
 		File file = new File(url);

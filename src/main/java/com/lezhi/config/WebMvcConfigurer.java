@@ -11,6 +11,8 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
         registry.addResourceHandler("/projectPic/**").addResourceLocations("classpath:/projectPic/");
+        registry.addResourceHandler("/bigPic/**").addResourceLocations("classpath:/bigPic/");
+        registry.addResourceHandler("/clientPic/**").addResourceLocations("classpath:/clientPic/");
         super.addResourceHandlers(registry);
     }
 }
