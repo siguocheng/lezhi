@@ -94,6 +94,13 @@
 						axios.post("/lezhi/contact/getContact", {
 							id: this.id
 						}).then((response) => {
+							
+							if (response.data.code == -1) {
+								
+								window.location = "login.html";
+								return;
+							}
+							
 							if (response.data.data != null){
 								var data = response.data.data;
 								this.name = data.name;
@@ -113,6 +120,12 @@
 							address: this.address,
 							mail: this.mail,
 						}).then((response) => {
+							if (response.data.code == -1) {
+								
+								window.location = "login.html";
+								return;
+							}
+							
 							if (response.data.data != null){
 								this.$message("更新成功");
 							} else {

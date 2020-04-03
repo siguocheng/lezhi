@@ -94,6 +94,13 @@
 						).then((response) => {
 						
 							if (response.data != null) {
+								
+								if (response.data.code == -1) {
+									
+									window.location = "login.html";
+									return;
+								}
+								
 								var data = response.data.data;
 								if (this.type == 1) {
 									for (var i = 0; i < data.length;i++) {
@@ -167,7 +174,13 @@
 							type: this.type
 						}).then((response) => {
 
-							if (response.data != null) {
+							if (response.data.code == -1) {
+								
+								window.location = "login.html";
+								return;
+							}
+							if (response.data.data != null) {
+								
 								var data = response.data.data;
 								if (this.type == 1) {
 									for (var i = 0; i < data.length;i++) {

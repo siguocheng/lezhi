@@ -101,7 +101,7 @@
 							id: row
 						}).then((response) => {
 
-							if (response.code == -1) {
+							if (response.data.code == -1) {
 								window.location = "login.html";
 							} else {
 								if (response.data != nul) {
@@ -122,7 +122,7 @@
 							pageNum: this.page,
 							pageSize: this.pageSize
 						}).then((response) => {
-							if (response.code == -1) {
+							if (response.data.code == -1) {
 								window.location = "login.html";
 							} else {
 								this.tableData = response.data.data;
