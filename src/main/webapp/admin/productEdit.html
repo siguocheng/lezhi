@@ -156,6 +156,12 @@
 						axios.post("/lezhi/product/productDetail", {
 							id: this.id
 						}).then((response) => {
+							if (response.data.code == -1) {
+								
+								window.location = "login.html";
+								this.$message.warning("请登录");
+								return;
+							}
 							debugger;
 							var data = response.data.data;
 							if (data != null) {

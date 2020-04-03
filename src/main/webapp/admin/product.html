@@ -96,11 +96,16 @@
 							id: row
 						}).then((response) => {
 
-							if (response.data != nul) {
-								this.$message.warning("删除成功");
+							if (response.code == -1) {
+								window.location = "login.html";
 							} else {
-								this.$message.warning("删除失败");
+								if (response.data != nul) {
+									this.$message.warning("删除成功");
+								} else {
+									this.$message.warning("删除失败");
+								}
 							}
+
 						}).catch((response) => {
 							console.log("错误" + response)
 						});
@@ -112,9 +117,13 @@
 							pageNum: this.page,
 							pageSize: this.pageSize
 						}).then((response) => {
+							if (response.code == -1) {
+								window.location = "login.html";
+							} else {
+								this.tableData = response.data.data;
+								this.total = response.data.total;
+							}
 
-							this.tableData = response.data.data;
-							this.total = response.data.total;
 						}).catch((response) => {
 							console.log("错误" + response)
 						});

@@ -5,12 +5,16 @@
 		<script src="../js/vue.js"></script>
 		<script src="../js/jquery.js"></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 		<title>后台管理系统登陆页面</title>
 		<link rel="stylesheet" href="../css/main.css">
 		<style type="text/css">
 			input {
-				border:0px;
-				border-bottom:1px solid black;
+				border: 0px;
+				border-bottom: 1px solid black;
 				text-indent: 20px;
 				background-repeat: no-repeat;
 				height: 50px;
@@ -18,85 +22,89 @@
 				font-size: 20px;
 				width: 200px;
 			}
+
 			input:focus {
 				outline: none;
 			}
-			button:focus{
+
+			button:focus {
 				outline: none;
 			}
 		</style>
 		<script type="text/javascript">
-			
-			
+
+
 		</script>
 	</head>
 	<body>
-<!-- 		<div style="height: 120px;background-color: #4c60be;">
+		<!-- 		<div style="height: 120px;background-color: #4c60be;">
 			<div style="height: 20px;width: 1200px;margin: 0px auto;padding:40px 0px;color: white;font-size: 20px;">后台管理系统</div>
 		</div> -->
-		<div id="loginDiv" style="width: 1200px;margin: 0 auto; text-align: center;font-size: 20px;">
-			<div style="margin-top: 50px;">
-				用户名：<input id="userName" type="search" placeholder="请输入用户名" v-model="userName"/><span style="color: red;">{{userNameErrmsg}}</span>
-			</div>
-			<div style="margin-top: 30px;">
-				密码：<input id="password" type="search" placeholder="请输入密码" v-model="password"/><span style="color: red;">{{passowordErrmsg}}</span>
-			</div>
-			<div>{{errorMsg}}</div>
-			<div style="margin-top: 50px;">
-				<button style="border-radius: 10px;background-color: #516DFF;border: 0px;width: 200px;height: 50px;color: white;" v-on:click="login()">登陆</button>
+		<div style="margin-top:15%;">
+		
+			<div id="loginDiv" class="container" style="text-align: center;font-size: 18px;">
+				<div style="margin-top: 50px;">
+					用户名：<input id="userName" type="search" placeholder="请输入用户名" v-model="userName" />
+				</div>
+				<div style="margin-top: 30px;">
+					密码：<input id="password" type="password" placeholder="请输入密码" v-model="password" />
+				</div>
+				<div style="margin-top: 50px;">
+					<button style="border-radius: 10px;background-color: #516DFF;border: 0px;width: 200px;height: 50px;color: white;font-size: 20px;"
+					 v-on:click="login()">登陆</button>
+				</div>
 			</div>
 		</div>
 		<script type="text/javascript">
 			var app = new Vue({
 				el: '#loginDiv',
 				data: {
-					todos: [
-					      { text: '汽车线束' },
-					      { text: '家电线束' },
-					      { text: '医疗线束' }
-					    ],
-						page:2,
-						total:20,
-						pageSize:10,
-						userName:"",
-						password:"",
-						userNameErrmsg:"",
-						passowordErrmsg:"",
-						errorMsg:""
+					todos: [{
+							text: '汽车线束'
+						},
+						{
+							text: '家电线束'
+						},
+						{
+							text: '医疗线束'
+						}
+					],
+					page: 2,
+					total: 20,
+					pageSize: 10,
+					userName: "",
+					password: "",
 				},
 				methods: {
-					login(){
-						
-						if (this.userName == ""){
-							this.userNameErrmsg = "请输入用户名";
-						} else{
-							this.userNameErrmsg = ""
+					login() {
+
+						if (this.userName == "") {
+							this.$message.warning("请输入用户名");
+							return;
 						}
-						if (this.password ==""){
-							this.passowordErrmsg = "请输入密码";
-						} else{
-							this.passowordErrmsg = "";
+						if (this.password == "") {
+							this.$message.warning("请输入密码");
+							return;
 						}
-						if(this.userNameErrmsg =="" && this.passowordErrmsg == ""){
-							axios.post("/lezhi/user/login",
-										{
-								          username: this.userName,
-								          password: this.password
-								        }).then((response) => {
-											debugger;
-								        	if (response.data.data==null){
-												this.errorMsg ="用户名或者密码错误";
-												console.log(response.data.msg);
-											} else {
-												window.location="product.html";
-											}
-								            
-								        }).catch((response) => {
-								          console.log("错误"+response);
-								        });
+
+						axios.post("/lezhi/user/login", {
+							username: this.userName,
+							password: this.password
+						}).then((response) => {
+							debugger;
+							if (response.data.data == null) {
+								this.$message.warning("用户名或者密码错误");
+								console.log(response.data.msg);
+							} else {
+								window.location = "product.html";
 							}
-						}
-						
+
+						}).catch((response) => {
+							console.log("错误" + response);
+						});
+					}
+
+
 				}
 			});
 		</script>
