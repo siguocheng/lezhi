@@ -14,8 +14,9 @@
 	<body>
 
 		<div id="productList">
-			<div style="float:left;width:20%">
-				<h5>菜单</h5>
+		
+			<div class="fl" style="width:15%;">
+				<p style="font-size: 20px;text-align: center;padding-top: 30px;padding-bottom: 30px;">菜单</p>
 				<el-menu default-active="2" class="el-menu-vertical-demo">
 					<el-menu-item index="1">
 						<i class="el-icon-menu"></i>
@@ -32,32 +33,36 @@
 				</el-menu>
 			</div>
 
-			<div style="float:left;">
-				<el-input style="width: 200px;" placeholder="请输入内容" v-model="productName" clearable>
-				</el-input>
-				<el-button type="primary" v-on:click="current_change()">查询</el-button>
-				<el-button type="primary" v-on:click="add()">新增</el-button>
-				<el-table :data="tableData" stripe style="width: 60%">
-					<el-table-column prop="productName" label="产品名字" width="180">
-					</el-table-column>
-					<el-table-column prop="productType" label="产品类型" width="180">
-					</el-table-column>
-					<el-table-column label="产品图片">
-						<template slot-scope="scope">
-							<img :src="scope.row.productPic" width="50px" height="50px" v-if="scope.row.productPic != ''" />
-						</template>
-					</el-table-column>
-					<el-table-column prop="id" label="id" v-if="false">
-					</el-table-column>
-					<el-table-column fixed="right" label="操作" width="200px">
-						<template slot-scope="scope">
+			<div class="fl" style="width: 1000px;">
+				<div class="fr" style="padding-top: 60px;padding-bottom: 60px;">
+					<el-input style="width: 200px;" placeholder="请输入内容" v-model="productName" clearable>
+					</el-input>
+					<el-button type="primary" v-on:click="current_change()">查询</el-button>
+					<el-button type="primary" v-on:click="add()">新增</el-button>
+				</div>
+				<div class="clear-float" style="padding-left: 60px;">
+					<el-table :data="tableData" stripe style="text-align: center;">
+						<el-table-column prop="productName" label="产品名字" width="220">
+						</el-table-column>
+						<el-table-column prop="productType" label="产品类型" width="220">
+						</el-table-column>
+						<el-table-column label="产品图片">
+							<template slot-scope="scope">
+								<img :src="scope.row.productPic" width="50px" height="50px" v-if="scope.row.productPic != ''" />
+							</template>
+						</el-table-column>
+						<el-table-column prop="id" label="id" v-if="false">
+						</el-table-column>
+						<el-table-column fixed="right" label="操作" width="200px">
+							<template slot-scope="scope">
 
-							<el-button type="text" size="small">查看</el-button>
-							<el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
-							<el-button @click="productDel(scope.row)" type="text" size="small">删除</el-button>
-						</template>
-					</el-table-column>
-				</el-table>
+								<el-button type="text" size="small">查看</el-button>
+								<el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
+								<el-button @click="productDel(scope.row)" type="text" size="small">删除</el-button>
+							</template>
+						</el-table-column>
+					</el-table>
+				</div>
 				<div id="page" style="margin:0 auto;margin-bottom: 50px; width:1200px;text-align: center;">
 					<el-pagination background layout="prev, pager, next" :current-page.sync="page" :total="total" :page-size="pageSize"
 					 @current-change="current_change">

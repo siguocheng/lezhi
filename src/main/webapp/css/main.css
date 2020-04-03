@@ -1,6 +1,5 @@
 body {
-	font: 16px/140% Arial, "宋体", Helvetica, sans-serif, Verdana;
-	color: #5a5a5a;
+	font-family: Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
 	margin: 0;
 	height:100%;
 }
@@ -56,20 +55,46 @@ li {
 .fr{
 	float: right;
 }
-col-1,
-col-2,
-col-3,
-col-4,
-col-5,
-col-6,
-col-7,
-col-8,
-col-9{
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9{
 	display: block;
 	position: relative;
 	min-height: 1px;
 }
-
+.col-1{
+	width: 10%;
+}
+.col-2{
+	width: 20%;
+}
+.col-3{
+	width: 30%;
+}
+.col-4{
+	width: 40%;
+}
+.col-5{
+	width: 50%;
+}
+.col-6{
+	width: 60%;
+}
+.col-7{
+	width: 70%;
+}
+.col-8{
+	width: 80%;
+}
+.col-9{
+	width: 90%;
+}
 .container{
 	display: block;
 	margin: 0 auto;
