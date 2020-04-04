@@ -14,12 +14,17 @@
 			.input {
 				display: inline-block;
 			}
+			.contactItem{
+				width: 400px;
+				height: 60px;
+			}
+			
 		</style>
 	</head>
 	<body>
 		<div id="contact">
-			<div style="float:left;width:20%">
-				<h5>菜单</h5>
+			<div class="fl" style="width:15%;">
+				<p style="font-size: 20px;text-align: center;padding-top: 30px;padding-bottom: 30px;">菜单</p>
 				<el-menu default-active="3" class="el-menu-vertical-demo">
 					<el-menu-item index="1">
 						<i class="el-icon-menu"></i>
@@ -35,33 +40,38 @@
 					</el-menu-item>
 				</el-menu>
 			</div>
-			<div style="float:left;">
-				<div >
-					联系人：
-					<div class="input">
-						<el-input v-model="name" placeholder="请输入内容"></el-input>
-					</div>
-				</div>
+			<div class="fl" style="padding-left: 60px;padding-top: 60px;padding-bottom: 60px;">
 				<div>
-					电话：
-					<div class="input">
-						<el-input v-model="phoneNumber" placeholder="请输入内容"></el-input>
+					<div class="contactItem">
+						<span>联系人：</span>
+						<span>
+							<el-input v-model="name" placeholder="请输入内容" style="width: 80%"></el-input>
+						</span>
 					</div>
-				</div>
-				<div>
-					地址：
-					<div class="input">
-						<el-input v-model="address" placeholder="请输入内容"></el-input>
+					<div class="contactItem">
+						电话：
+						<span>
+							<el-input v-model="phoneNumber" placeholder="请输入内容" style="width: 80%"></el-input>
+						</span>
+					</div>
+					<div class="contactItem">
+						地址：
+						<span>
+							<el-input v-model="address" placeholder="请输入内容" style="width: 80%"></el-input>
+						</span>
+						
+					</div class="contactItem">
+					<div class="contactItem">
+						邮箱：
+						<span>
+							<el-input v-model="mail" placeholder="请输入内容" style="width: 80%"></el-input>
+						</span>
+					</div>
+					<div style="text-align: center;">
+						<el-button type="primary" v-on:click="save()" >保存</el-button>
 					</div>
 					
 				</div>
-				<div>
-					邮箱：
-					<div class="input">
-						<el-input v-model="mail" placeholder="请输入内容"></el-input>
-					</div>
-				</div>
-				<el-button type="primary" v-on:click="save()" >保存</el-button>
 			</div>
 			
 			
@@ -84,6 +94,13 @@
 						axios.post("/lezhi/contact/getContact", {
 							id: this.id
 						}).then((response) => {
+							
+							if (response.data.code == -1) {
+								
+								window.location = "login.html";
+								return;
+							}
+							
 							if (response.data.data != null){
 								var data = response.data.data;
 								this.name = data.name;
@@ -103,6 +120,12 @@
 							address: this.address,
 							mail: this.mail,
 						}).then((response) => {
+							if (response.data.code == -1) {
+								
+								window.location = "login.html";
+								return;
+							}
+							
 							if (response.data.data != null){
 								this.$message("更新成功");
 							} else {

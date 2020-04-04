@@ -1,21 +1,28 @@
 package com.lezhi.filter;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.*;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.*;
+import com.alibaba.fastjson.JSONObject;
+import com.lezhi.entity.ResultBean;
+import com.lezhi.entity.User;
 
-//@Component
+@Component
 public class SessionFilter implements Filter {
-
-	private static final int FIVE_MINUTES = 5 * 60 * 1000;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SessionFilter.class);
 
@@ -39,32 +46,29 @@ public class SessionFilter implements Filter {
 		}
 
 		Cookie[] cookies = httpServletRequest.getCookies();
-		if (cookies != null) {
-			for (Cookie cookie : cookies) {
-				String value = cookie.getValue();
-				StringBuilder builder = new StringBuilder();
-				builder.append(cookie.getName() + "=" + value + ";");
-				builder.append("Secure;");// Cookie设置Secure标识
-				builder.append("HttpOnly;");// Cookie设置HttpOnly
 
-//				Calendar cal = Calendar.getInstance();
-//				cal.add(Calendar.HOUR, 1);
-//				Date date = cal.getTime();
-//				Locale locale = Locale.CHINA;
-//				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss",locale);
-//				builder.append("Expires="+sdf.format(date));
-
-				httpServletResponse.addHeader("Set-Cookie", builder.toString());
-//                cookie.setSecure(true);
-//                cookie.setHttpOnly(true);
+		// 不是登陆接口，需要判断session是否过期
+		if (!url.contains("login") && !url.contains(".")) {
+			User user = (User)httpServletRequest.getSession().getAttribute("user");
+			if (user == null) {
+				
+				httpServletResponse.setContentType("application/json; charset=utf-8");
+				ResultBean resultBean = new ResultBean<>();
+				resultBean.setCode(ResultBean.NO_LOGIN);
+				resultBean.setMsg("请登陆");
+				response.getWriter().write(JSONObject.toJSONString(resultBean));
+			} else {
+				filterChain.doFilter(request, response);
 			}
+		} else {
+			filterChain.doFilter(request, response);
 		}
-
+		
 	}
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		// TODO Auto-generated method stub
+
 	}
 
 	/**
