@@ -25,6 +25,8 @@ public class ContactServiceImpl implements ContactService {
 		Dictionary d3 = dictionaryMapper.selectByItemKey(dictionary);
 		dictionary.setItemKey("address");
 		Dictionary d4 = dictionaryMapper.selectByItemKey(dictionary);
+		dictionary.setItemKey("fax");
+		Dictionary d5 = dictionaryMapper.selectByItemKey(dictionary);
 
 		Contact contact = new Contact();
 		if (d1 != null) {
@@ -38,6 +40,9 @@ public class ContactServiceImpl implements ContactService {
 		}
 		if (d4 != null) {
 			contact.setAddress(d4.getItemValue());
+		}
+		if (d5 != null) {
+			contact.setFax(d5.getItemValue());
 		}
 		return contact;
 	}

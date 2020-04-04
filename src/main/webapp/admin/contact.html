@@ -67,6 +67,12 @@
 							<el-input v-model="mail" placeholder="请输入内容" style="width: 80%"></el-input>
 						</span>
 					</div>
+					<div class="contactItem">
+						传真
+						<span>
+							<el-input v-model="fax" placeholder="请输入内容" style="width: 80%"></el-input>
+						</span>
+					</div>
 					<div style="text-align: center;">
 						<el-button type="primary" v-on:click="save()" >保存</el-button>
 					</div>
@@ -85,6 +91,7 @@
 					phoneNumber: "",
 					address: "",
 					mail: "",
+					fax:""
 				},
 				mounted(){
 					this.getContact();
@@ -92,7 +99,7 @@
 				methods:{
 					getContact:function(){
 						axios.post("/lezhi/contact/getContact", {
-							id: this.id
+							
 						}).then((response) => {
 							
 							if (response.data.code == -1) {
@@ -107,6 +114,7 @@
 								this.mail = data.mail;
 								this.phoneNumber = data.phoneNumber;
 								this.address = data.address;
+								this.fax = data.fax;
 							}
 						
 						}).catch((response) => {
@@ -119,6 +127,7 @@
 							phoneNumber: this.phoneNumber,
 							address: this.address,
 							mail: this.mail,
+							fax:this.fax
 						}).then((response) => {
 							if (response.data.code == -1) {
 								

@@ -70,60 +70,46 @@
 				},
 				mounted() {
 					// 取得主页大屏图片
-					this.type = 1;
-					this.getPicture();
+					this.getPicture(1);
 
 					// 取得主页客户图片
-					this.type = 2;
-					this.getPicture();
+					this.getPicture(2);
 				},
 				methods: {
-					save(type){
+					save(type) {
 						var pics = [];
-						if (type == 1){
-							pics=this.urls;
-							
-						} else if (type ==2){
-							pics=this.urls1;
+						if (type == 1) {
+							pics = this.urls;
+
+						} else if (type == 2) {
+							pics = this.urls1;
 						}
-						for (var i=0;i<pics.length;i++){
-							pics[i].type=type;
+						for (var i = 0; i < pics.length; i++) {
+							pics[i].type = type;
 						}
 						axios.post("/lezhi/homepage/updatePicture", pics
-							
+
 						).then((response) => {
-						
+
 							if (response.data != null) {
-								
+
 								if (response.data.code == -1) {
-									
+
 									window.location = "login.html";
 									return;
 								}
-								
+
 								var data = response.data.data;
-								if (this.type == 1) {
-									for (var i = 0; i < data.length;i++) {
-										var pic = {};
-										pic.url = data[i].url;
-										pic.name = data[i].name;
-										this.fileList.push(pic);
-										pic.id=data[i].id;
-										this.urls.push(pic);
-									}
-								} else if (this.type == 2) {
-									for (var i = 0; i < data.length;i++) {
-										var pic = {};
-										pic.url = data[i].url;
-										pic.name = data[i].name;
-										this.fileList1.push(pic);
-										pic.id=data[i].id;
-										this.urls1.push(pic);
-									}
+								if (data != null) {
+									this.$message("更新成功");
+
+									this.getPicture(type);
+								} else {
+									this.$message("更新失败");
 								}
-						
+
 							} else {
-						
+
 							}
 						}).catch((response) => {
 							console.log("错误" + response)
@@ -169,35 +155,35 @@
 
 						this.fileList1 = fileList;
 					},
-					getPicture() {
+					getPicture(type) {
 						axios.post("/lezhi/homepage/listPicture", {
-							type: this.type
+							type: type
 						}).then((response) => {
 
 							if (response.data.code == -1) {
-								
+
 								window.location = "login.html";
 								return;
 							}
 							if (response.data.data != null) {
-								
+
 								var data = response.data.data;
 								if (this.type == 1) {
-									for (var i = 0; i < data.length;i++) {
+									for (var i = 0; i < data.length; i++) {
 										var pic = {};
 										pic.url = data[i].url;
 										pic.name = data[i].name;
 										this.fileList.push(pic);
-										pic.id=data[i].id;
+										pic.id = data[i].id;
 										this.urls.push(pic);
 									}
 								} else if (this.type == 2) {
-									for (var i = 0; i < data.length;i++) {
+									for (var i = 0; i < data.length; i++) {
 										var pic = {};
 										pic.url = data[i].url;
 										pic.name = data[i].name;
 										this.fileList1.push(pic);
-										pic.id=data[i].id;
+										pic.id = data[i].id;
 										this.urls1.push(pic);
 									}
 								}

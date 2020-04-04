@@ -47,8 +47,10 @@ public class SessionFilter implements Filter {
 
 		Cookie[] cookies = httpServletRequest.getCookies();
 
+		String localtion =httpServletRequest.getRequestURL().toString();
+		
 		// 不是登陆接口，需要判断session是否过期
-		if (!url.contains("login") && !url.contains(".")) {
+		if (!url.contains("login") && !url.contains(".") && localtion.contains("admin")) {
 			User user = (User)httpServletRequest.getSession().getAttribute("user");
 			if (user == null) {
 				
