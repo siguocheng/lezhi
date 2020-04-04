@@ -44,28 +44,30 @@ public class UploadFileController {
 		String message = "";
 
 		String uploadUrl = ResourceUtils.getURL("classpath:").getPath();
+		
+		String forder = "/otherPic";
+		// 产品图片
+		if (picType == 1) {
+			forder = "/bigPic";
+		}
+		// 主页大图片
+		else if (picType == 2) {
+			forder = "/clientPic";
+		}
+		// 主页客户图片
+		else if (picType == 3) {
+			forder = "/projectPic";
+		}
+		
 		// 若目录不存在，则创建
-		String directory = uploadUrl + "/projectPic";
+		String directory = uploadUrl + forder;
 		File dir = new File(directory);
 		if (!dir.exists()) {
 			dir.mkdir();
 		}
 		String pictureName = sdf.format(new Date())  + "_"  + fileName;
 		String url = directory + File.separator + pictureName;
-		String pictureUrl = serverUrl + "/lezhi/otherPic/" + pictureName;
-		
-		// 产品图片
-		if (picType == 1) {
-			pictureUrl = serverUrl + "/lezhi/bigPic/" + pictureName;
-		}
-		// 主页大图片
-		else if (picType == 2) {
-			pictureUrl = serverUrl + "/lezhi/clientPic/" + pictureName;
-		}
-		// 主页客户图片
-		else if (picType == 3) {
-			pictureUrl = serverUrl + "/lezhi/projectPic/" + pictureName;
-		}
+		String pictureUrl = serverUrl + "/lezhi" + forder + "/" + pictureName;
 		
 		File file = new File(url);
 		try (InputStream is = multipartFile.getInputStream(); FileOutputStream fos = new FileOutputStream(file)) {
