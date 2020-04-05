@@ -21,7 +21,7 @@
   <select id="selectByUserName" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from user
+    from [user]
     where user_name = #{userName}
     <if test="password != null">
     	and user_password=#{password}

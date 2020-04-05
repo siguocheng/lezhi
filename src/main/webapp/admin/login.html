@@ -33,9 +33,9 @@
 							<div class="input_outer">
 								<span class="us_uer"></span>
 								<input name="logpass" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" value=""
-								 type="password" placeholder="请输入密码" v-model="password">
+								 type="password" placeholder="请输入密码" v-model="password" @keyup.enter="login">
 							</div>
-							<div class="mb2"><a class="act-but submit" href="javascript:;" style="color: #FFFFFF" v-on:click="login()">登录</a></div>
+							<div class="mb2"><a class="act-but submit" href="javascript:;" style="color: #FFFFFF" v-on:click="login()" >登录</a></div>
 						</form>
 					</div>
 				</div>
@@ -46,6 +46,8 @@
 		<script src="../js/rAF.js"></script>
 		<script src="../js/demo-1.js"></script>
 		<script type="text/javascript">
+			
+			
 			var app = new Vue({
 				el: '#loginDiv',
 				data: {
@@ -64,6 +66,9 @@
 					pageSize: 10,
 					userName: "",
 					password: "",
+				},
+				mounted(){
+					
 				},
 				methods: {
 					login() {
@@ -97,6 +102,7 @@
 
 				}
 			});
+			
 		</script>
 	</body>
 </html>

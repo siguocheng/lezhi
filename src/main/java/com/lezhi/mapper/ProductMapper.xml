@@ -32,10 +32,10 @@
     from product
     where is_deleted=1
     <if test="productName != null">
-    	and product_name = #{productName}
+    	and product_name like CONCAT('%','${productName}','%' )  
     </if>
     <if test="productTitle != null">
-    	and product_title = #{productTitle}
+    	and product_title like CONCAT('%','${productTitle}','%' )  
     </if>
     <!-- limit #{startRow},#{pageSize}; -->
   </select>

@@ -94,7 +94,7 @@
 					},
 					handleClick(row) {
 
-						window.open("productEdit.html?id=" + row.id);
+						window.open("productEdit.html?id=" + row.id,"_self");
 					},
 					productDel(row) {
 						axios.post("/lezhi/product/deleteProduct", {
