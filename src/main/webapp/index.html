@@ -9,15 +9,15 @@
 		<script src="js/jquery.SuperSlide2.js"></script>
 		<script src="js/jquery-migrate-1.2.1.js"></script>
 		<script src="js/navfix.js"></script>
-		
+
 		<link href="css/owl/owl.carousel.css" rel="stylesheet">
 		<link href="css/owl/owl.theme.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="shortcut icon" href="img/zhele.ico" type="image/x-icon">
+		<script src="js/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<title>浙江乐志电子科技有限公司</title>
 		<style type="text/css">
-			
-
 			#b06 {
 				width: 640px;
 			}
@@ -250,207 +250,251 @@
 
 				});
 
-				 $('#menu1').navfix(0,999);
-				 
+				$('#menu1').navfix(0, 999);
+
 			});
 		</script>
 	</head>
 	<body>
-		<!-- 菜单 -->
-		<div id="menu1" style="margin:0 auto;width: 100%;background-color: white;position:relative; z-index:99; ">
-			<div  style="margin:0 auto;width: 1200px;">
-				<div style="float: left;margin-top: 10px;margin-left: 30px;">
-					<a href=""><img src="img/logo/logo2.jpg" width="200px" height="55px" />
+		<div id="homepage">
+			<!-- 菜单 -->
+			<div id="menu1" style="margin:0 auto;width: 100%;background-color: white;position:relative; z-index:99; ">
+				<div class="container">
+					<div style="float: left;margin-top: 10px;margin-left: 30px;">
+						<a href=""><img src="img/logo/logo2.jpg" width="200px" height="55px" />
+						</a>
+					</div>
+					<div style="float: left;margin-left: 20px;margin-top:8px">
+						<span style="line-height: 70px;font-size: 30px;color:black;font-family:微软雅黑;">浙江乐志电子有限公司</span>
+					</div>
+					<div id="menu" class="cssmenu" style="float:right">
+						<ul>
+							<li><a href="index.html" class="hover">主页</a></li>
+							<li><a href="productList.html" class="hover">产品中心</a></li>
+							<li><a href="about.html" class="hover">企业介绍</a></li>
+							<li><a href="contact.html" class="hover">联系我们</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!--  图片轮播 -->
+			<div class="banner" id="b06">
+				<ul>
+					<li><img class="sliderimg" src="img/index/20170330104014152.jpg" alt="" width="100%" height="800px"></li>
+					<li><img class="sliderimg" src="img/index/20170220131910352.jpg" alt="" width="100%" height="800px"></li>
+					<li><img class="sliderimg" src="img/index/20170216171204147.jpg" alt="" width="100%" height="800px"></li>
+				</ul>
+				<a href="javascript:void(0);" class="unslider-arrow06 prev"><img class="arrow" id="al" src="img/arrowl.png" alt="prev"
+					 width="20" height="35"></a>
+				<a href="javascript:void(0);" class="unslider-arrow06 next"><img class="arrow" id="ar" src="img/arrowr.png" alt="next"
+					 width="20" height="37"></a>
+			</div>
+
+			<div id="div1" class="title">
+				<strong>推荐产品</strong>
+			</div>
+			<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
+			</div>
+			<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;   text-align: center;">
+				Product series
+			</div>
+			<div style="margin:5px auto;width: 1200px;font-size: 15px;text-align: center;">
+				浙江乐志电子有限公司是一家拥有完整科学的质量管理体系 汽车线束、家电线束、医疗线束等产品的专业生产加工的公司
+			</div>
+
+			<div id="product" class="container" style="height:600px">
+				<div class="product">
+					<a href="">
+						<img id="img1" src="img/pr001.jpeg" width="350px" height="250px" />
 					</a>
 				</div>
-				<div style="float: left;margin-left: 20px;margin-top:8px">
-					<span style="line-height: 70px;font-size: 30px;color:black;font-family:微软雅黑;">浙江乐志电子有限公司</span>
+				<div class="product">
+					<a href="">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
 				</div>
-				<div id="menu" class="cssmenu" style="float:right">
-					<ul>
-						<li><a href="index.html" class="hover">主页</a></li>
-						<li><a href="productList.html" class="hover">产品中心</a></li>
-						<li><a href="about.html" class="hover">企业介绍</a></li>
-						<li><a href="contact.html" class="hover">联系我们</a></li>
-					</ul>
+				<div class="product">
+					<a href="">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
+				</div>
+				<div class="product">
+					<a href="">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
+				</div>
+				<div class="product">
+					<a href="">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
+				</div>
+				<div class="product">
+					<a href="">
+						<img src="img/pr001.jpeg" width="350px" height="250px" />
+					</a>
 				</div>
 			</div>
-		</div>
-		
-		<!--  图片轮播 -->
-		<div class="banner" id="b06">
-			<ul>
-				<li><img class="sliderimg" src="img/index/20170330104014152.jpg" alt="" width="100%" height="800px"></li>
-				<li><img class="sliderimg" src="img/index/20170220131910352.jpg" alt="" width="100%" height="800px"></li>
-				<li><img class="sliderimg" src="img/index/20170216171204147.jpg" alt="" width="100%" height="800px"></li>
-			</ul>
-			<a href="javascript:void(0);" class="unslider-arrow06 prev"><img class="arrow" id="al" src="img/arrowl.png" alt="prev"
-				 width="20" height="35"></a>
-			<a href="javascript:void(0);" class="unslider-arrow06 next"><img class="arrow" id="ar" src="img/arrowr.png" alt="next"
-				 width="20" height="37"></a>
-		</div>
+			<div id="advantage" class="container">
+				<div class="title">
+					<strong>我们的优势</strong>
+				</div>
+				<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px; ">
+				</div>
+				<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;text-align: center;">
+					Our Advantages
+				</div>
 
-		<div id="div1" class="title">
-			<strong>推荐产品</strong>
-		</div>
-		<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
-		</div>
-		<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;   text-align: center;">
-			Product series
-		</div>
-		<div style="margin:5px auto;width: 1200px;font-size: 15px;text-align: center;">
-			浙江乐志电子有限公司是一家拥有完整科学的质量管理体系 汽车线束、家电线束、医疗线束等产品的专业生产加工的公司
-		</div>
-		
-		<div id="product" style="margin:0 auto;width: 1200px;height:600px">
-			<div class="product">
-				<a href="">
-					<img id="img1" src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
+				<div class="content">多年的行业经验</div>
+				<div class="content" style="background-color: #769DFF;">产品质量过硬</div>
+				<div class="content">良好的口碑</div>
+				<div class="content" style="background-color: #769DFF;">专业的售后服务</div>
 			</div>
-			<div class="product">
-				<a href="">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
+			<!-- 合作伙伴-->
+			<div id="div2" class="title" style="margin-top: 250px;">
+				<strong>我们的客户</strong>
 			</div>
-			<div class="product">
-				<a href="">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
-			</div>
-			<div class="product">
-				<a href="">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
-			</div>
-			<div class="product">
-				<a href="">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
-			</div>
-			<div class="product">
-				<a href="">
-					<img src="img/pr001.jpeg" width="350px" height="250px" />
-				</a>
-			</div>
-		</div>
-		<div id="advantage" style="margin: 0 auto; width: 1200px;">
-			<div  class="title">
-				<strong>我们的优势</strong>
-			</div>
-			<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px; ">
+			<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
 			</div>
 			<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;text-align: center;">
-				Our Advantages
+				Cooperative partner
 			</div>
-			
-			<div class="content">多年的行业经验</div>
-			<div class="content" style="background-color: #769DFF;">产品质量过硬</div>
-			<div class="content">良好的口碑</div>
-			<div class="content" style="background-color: #769DFF;">专业的售后服务</div>
-		 </div>
-		<!-- 合作伙伴-->
-		<div id="div2" class="title" style="margin-top: 250px;">
-			<strong>我们的客户</strong>
-		</div>
-		<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
-		</div>
-		<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;   text-align: center;">
-			Cooperative partner
-		</div>
-		<div class="friend">
-			<div class="mr_frbox">
-				<img class="mr_frBtnL prev" src="img/client/sprite-l.png" />
-				<div class="mr_frUl">
-					<ul id="mr_fu">
-						<li><a href="">
-								<img src="img/client/1.jpg" />
-							</a>
-						</li>
-						<li><a href="">
-								<img src="img/client/2.jpg" />
-							</a>
-						</li>
-						<li><a href="">
-								<img src="img/client/3.jpg" />
-							</a>
-						</li>
-						<!-- <li><a href="">
-								<img src="img/client/4.jpg" />
-							</a>
-		                </li>
-						<li><a href="">
-								<img src="img/client/5.jpg" />
-							</a>
-						</li>
-						<li><a href="">
-								<img src="img/client/6.jpg" />
-							</a>
-						</li>
-						<li><a href="">
-								<img src="img/client/7.jpg" />
-							</a>
-						</li>
-						<li><a href="">
-								<img src="img/client/8.jpg" />
-							</a>
-						</li>
-						<li><a href="">
-								<img src="img/client/9.jpg" />
-							</a>
-						</li>
-						<li><a href="">
-								<img src="img/client/10.jpg" />
-							</a>
-						</li>
-						<li><a href="">
-								<img src="img/client/11.jpg" />
-							</a>
-						</li>
-						<li><a href="">
-								<img src="img/client/12.jpg" />
-							</a>
-						</li> -->
-						<li><a href="">
-								<img src="img/client/13.jpg" />
-							</a>
-						</li>
-						<li><a href="">
-								<img src="img/client/14.jpg" />
-							</a>
-						</li>
-						<li><a href="">
-								<img src="img/client/15.jpg" />
-							</a>
-						</li>
-					</ul>
+			<div class="friend">
+				<div class="mr_frbox">
+					<img class="mr_frBtnL prev" src="img/client/sprite-l.png" />
+					<div class="mr_frUl">
+						<ul id="mr_fu">
+							<li><a href="">
+									<img src="img/client/1.jpg" />
+								</a>
+							</li>
+							<li><a href="">
+									<img src="img/client/2.jpg" />
+								</a>
+							</li>
+							<li><a href="">
+									<img src="img/client/3.jpg" />
+								</a>
+							</li>
+							<!-- <li><a href="">
+									<img src="img/client/4.jpg" />
+								</a>
+							</li>
+							<li><a href="">
+									<img src="img/client/5.jpg" />
+								</a>
+							</li>
+							<li><a href="">
+									<img src="img/client/6.jpg" />
+								</a>
+							</li>
+							<li><a href="">
+									<img src="img/client/7.jpg" />
+								</a>
+							</li>
+							<li><a href="">
+									<img src="img/client/8.jpg" />
+								</a>
+							</li>
+							<li><a href="">
+									<img src="img/client/9.jpg" />
+								</a>
+							</li>
+							<li><a href="">
+									<img src="img/client/10.jpg" />
+								</a>
+							</li>
+							<li><a href="">
+									<img src="img/client/11.jpg" />
+								</a>
+							</li>
+							<li><a href="">
+									<img src="img/client/12.jpg" />
+								</a>
+							</li> -->
+							<li><a href="">
+									<img src="img/client/13.jpg" />
+								</a>
+							</li>
+							<li><a href="">
+									<img src="img/client/14.jpg" />
+								</a>
+							</li>
+							<li><a href="">
+									<img src="img/client/15.jpg" />
+								</a>
+							</li>
+						</ul>
+					</div>
+					<img class="mr_frBtnR next" src="img/client/sprite-r.png" />
 				</div>
-				<img class="mr_frBtnR next" src="img/client/sprite-r.png" />
+			</div>
+			<!-- 联系我们 -->
+			<!-- <div id="contact" class="title">
+				<strong>联系我们</strong>
+			</div>
+			<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
+			</div>
+			<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;   text-align: center;">
+				Contact Us
+			</div> -->
+			<div style="width: 100%;background-color: #1A1A1A;">
+				<div id="contactPic" style="margin: 0 auto; width: 1200px;font-family: 微软雅黑;height: 60px;">
+					<!-- <div class="pic"><img src="img/pic/phone.png" width="130px" height="130px"/></div>
+					<div class="pic"><img src="img/pic/address.png" width="130px" height="130px"/></div>
+					<div class="pic"><img src="img/pic/mail.png" width="130px" height="130px"/></div>
+					<div class="pic"><img src="img/pic/fax.png" width="130px" height="130px"/></div> -->
+					<div class="content">电话：{{name}} {{phoneNumber}}</div>
+					<div class="content">地址：{{address}}</div>
+					<div class="content">邮箱：{{mail}}</div>
+					<div class="content">传真：{{fax}}</div>
+				</div>
+				<div style="margin: 0 auto;width: 1200px;font-size: 15px;text-align: center;color: #FFFFFF;line-height: 50px;">
+					Copyright © 2019-2020,www.xxxxxx.com,All rights reserved 沪ICP备XXXXXX号
+				</div>
 			</div>
 		</div>
-		<!-- 联系我们 -->
-		<!-- <div id="contact" class="title">
-			<strong>联系我们</strong>
-		</div>
-		<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
-		</div>
-		<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;   text-align: center;">
-			Contact Us
-		</div> -->
-		<div style="width: 100%;background-color: #1A1A1A;">
-			<div id="contactPic" style="margin: 0 auto; width: 1200px;font-family: 微软雅黑;height: 60px;">
-				<!-- <div class="pic"><img src="img/pic/phone.png" width="130px" height="130px"/></div>
-				<div class="pic"><img src="img/pic/address.png" width="130px" height="130px"/></div>
-				<div class="pic"><img src="img/pic/mail.png" width="130px" height="130px"/></div>
-				<div class="pic"><img src="img/pic/fax.png" width="130px" height="130px"/></div> -->
-				<div class="content">电话：王建丽 13738068166</div>
-				<div class="content">地址：杭州市余杭区瓶窑镇长命村富豪路7号1号楼3单元4-1室</div>
-				<div class="content">邮箱：13738068166@163.com</div>
-				<div class="content">传真：0571-87425558</div>
-			</div>
-			<div style="margin: 0 auto;width: 1200px;font-size: 15px;text-align: center;color: #FFFFFF;line-height: 50px;">
-				Copyright © 2019-2020,www.xxxxxx.com,All rights reserved  沪ICP备XXXXXX号
-			</div>
-		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#homepage",
+				data: {
+					// 联系信息
+					name: "",
+					phoneNumber: "",
+					address: "",
+					mail: "",
+					fax: "",
+				},
+				mounted() {
+					this.getContact();
+				},
+				methods: {
+					getContact: function() {
+						axios.post("/lezhi/contact/getContact", {
+
+						}).then((response) => {
+
+							if (response.data.code == -1) {
+
+								window.location = "login.html";
+								return;
+							}
+
+							if (response.data.data != null) {
+								var data = response.data.data;
+								this.name = data.name;
+								this.mail = data.mail;
+								this.phoneNumber = data.phoneNumber;
+								this.address = data.address;
+								this.fax = data.fax;
+							}
+
+						}).catch((response) => {
+							console.log("错误" + response)
+						});
+					},
+				}
+			});
+		</script>
 	</body>
 </html>

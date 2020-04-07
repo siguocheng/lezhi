@@ -16,7 +16,7 @@
 		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 		<title>后台管理系统登陆页面</title>
 		<link rel="stylesheet" href="../css/main.css">
-
+		<link rel="shortcut icon" href="../img/zhele.ico" type="image/x-icon">
 	</head>
 	<body>
 		<div id="loginDiv" class="demo-1">
@@ -28,7 +28,7 @@
 						<form action="#" name="f" method="post">
 							<div class="input_outer">
 								<span class="u_user"></span>
-								<input name="logname" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户" v-model="userName">
+								<input name="logname" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户" v-model="userName" autocomplete='off'>
 							</div>
 							<div class="input_outer">
 								<span class="us_uer"></span>
@@ -41,10 +41,6 @@
 				</div>
 			</div>
 		</div>
-		<script src="../js/TweenLite.min.js"></script>
-		<script src="../js/EasePack.min.js"></script>
-		<script src="../js/rAF.js"></script>
-		<script src="../js/demo-1.js"></script>
 		<script type="text/javascript">
 			
 			
@@ -72,7 +68,7 @@
 				},
 				methods: {
 					login() {
-
+		
 						if (this.userName == "") {
 							this.$message.warning("请输入用户名");
 							return;
@@ -81,7 +77,7 @@
 							this.$message.warning("请输入密码");
 							return;
 						}
-
+		
 						axios.post("/lezhi/user/login", {
 							username: this.userName,
 							password: this.password
@@ -93,16 +89,21 @@
 							} else {
 								window.location = "product.html";
 							}
-
+		
 						}).catch((response) => {
 							console.log("错误" + response);
 						});
 					}
-
-
+		
+		
 				}
 			});
 			
 		</script>
+		<script src="../js/TweenLite.min.js"></script>
+		<script src="../js/EasePack.min.js"></script>
+		<script src="../js/rAF.js"></script>
+		<script src="../js/demo-1.js"></script>
+		
 	</body>
 </html>
