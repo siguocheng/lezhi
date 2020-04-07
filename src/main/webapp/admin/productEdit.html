@@ -16,7 +16,7 @@
 
 			<div class="fl" style="width:15%;">
 				<p style="font-size: 20px;text-align: center;padding-top: 30px;padding-bottom: 30px;">菜单</p>
-				<el-menu default-active="2" class="el-menu-vertical-demo" >
+				<el-menu default-active="2" class="el-menu-vertical-demo">
 					<el-menu-item index="1" @click="test">
 						<i class="el-icon-menu"></i>
 						<span slot="title"><a href="index.html">主页</a></span>
@@ -31,7 +31,7 @@
 					</el-menu-item>
 				</el-menu>
 			</div>
-			<div  class="fl" >
+			<div class="fl">
 				<div style="width: 500px;">
 					产品名字:<el-input v-model.trim="product.productName" placeholder="请输入内容"></el-input>
 				</div>
@@ -86,7 +86,7 @@
 					this.getProduct();
 				},
 				methods: {
-					test:function(){
+					test: function() {
 						alert(111);
 					},
 					uploadSuccess: function(response, file, fileList) {
@@ -195,7 +195,6 @@
 									pic0.name = data.productPicName;
 									pic0.url = data.productPic;
 									this.fileList.push(pic0);
-
 								}
 
 								if (data.productPic1 != '') {

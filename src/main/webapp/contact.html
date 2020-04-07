@@ -109,6 +109,10 @@
 					getContact:function(){
 						axios.post("/lezhi/contact/getContact?", {
 		
+						}, {
+							headers: {
+								'X-Custom-Header': 'lezhi'
+							}
 						}).then((response) => {
 
 							if (response.data.data != null) {

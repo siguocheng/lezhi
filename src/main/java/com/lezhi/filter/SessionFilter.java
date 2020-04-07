@@ -49,8 +49,10 @@ public class SessionFilter implements Filter {
 
 		String localtion =httpServletRequest.getRequestURL().toString();
 		
+		String custom = httpServletRequest.getHeader("X-Custom-Header");
+		
 		// 不是登陆接口，需要判断session是否过期
-		if (!url.contains("login") && !url.contains(".") && localtion.contains("admin")) {
+		if (!url.contains("login") && !url.contains(".") && custom == null) {
 			User user = (User)httpServletRequest.getSession().getAttribute("user");
 			if (user == null) {
 				
