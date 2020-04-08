@@ -31,7 +31,7 @@ public class UserController {
 		User user = new User();
 		user.setUserName(userDto.getUserName());
 		session.setAttribute("user", user);
-		session.setMaxInactiveInterval(60);
+		session.setMaxInactiveInterval(3600);
 		
 		return new ResultBean<>(ret);
 	}

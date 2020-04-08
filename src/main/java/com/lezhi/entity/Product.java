@@ -93,7 +93,18 @@ public class Product {
      */
     private String productPicName4;
 
-    /**
+    private Integer isHomePage;
+    
+    
+    public Integer getIsHomePage() {
+		return isHomePage;
+	}
+
+	public void setIsHomePage(Integer isHomePage) {
+		this.isHomePage = isHomePage;
+	}
+
+	/**
      * null
      * @return id null
      */

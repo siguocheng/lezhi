@@ -138,122 +138,7 @@
 				padding: 10px;
 			}
 		</style>
-		<script type="text/javascript" language="javascript">
-			$(window).resize(function() {
-				imgReload();
-			});
-
-			function imgReload() {
-				var imgHeight = 0;
-				var wtmp = $("body").width();
-				$("#b06 ul li").each(function() {
-					$(this).css({
-						width: wtmp + "px"
-					});
-				});
-				$(".sliderimg").each(function() {
-					$(this).css({
-						width: wtmp + "px"
-					});
-					imgHeight = $(this).height();
-				});
-			}
-
-			$(document).ready(function(e) {
-				imgReload();
-				var unslider06 = $('#b06').unslider({
-						dots: true,
-						fluid: true,
-						speed: 2000,
-						delay: 2000
-					}),
-					data06 = unslider06.data('unslider');
-				$('.unslider-arrow06').click(function() {
-					var fn = this.className.split(' ')[1];
-					data06[fn]();
-				});
-
-				$("#menu li").on('mouseover', function() {
-					// $(this).css("border-bottom", "2px solid #5A5A5A");
-					$(this).css("background-color", "#156cfd");
-					$(this).find("a").attr("class", "ahover");
-				}).mouseout(function() {
-					// $(this).css("border-bottom", "2px solid rgb(0,0,0,0)");
-					$(this).css("background-color", "white");
-					$(this).find("a").attr("class", "hover");
-				});
-
-				$('#owl-demo').owlCarousel({
-					navigation: true,
-					navigationText: ["上一个", "下一个"]
-				});
-
-				/* 图片滚动效果 */
-				$(".mr_frbox").slide({
-					titCell: "",
-					mainCell: ".mr_frUl ul",
-					autoPage: true,
-					effect: "leftLoop",
-					autoPlay: true,
-					vis: 5
-				});
-				$(".mr_frBtnL").on('mouseover', function() {
-					$(this).css("opacity", "0.3");
-				}).mouseout(function() {
-					$(this).css("opacity", "0.2");
-				});
-				$(".mr_frBtnR").on('mouseover', function() {
-					$(this).css("opacity", "0.3");
-				}).mouseout(function() {
-					$(this).css("opacity", "0.2");
-				});
-
-
-				$("#product img").each(function() {
-
-					$(this).on('mouseover', function() {
-						$(this).animate({
-							width: "360px",
-							height: "260px"
-						});
-						// $(this).animate({height:"270px"});
-					}).mouseout(function() {
-						$(this).animate({
-							width: "350px",
-							height: "250px"
-						});
-						// $(this).animate({height:"250px"});
-					});
-				});
-
-				$(document).scroll(function() {
-					var scroH = $(document).scrollTop(); // 滚动高度
-					var viewH = $(window).height(); // 可见高度 
-					var contentH = $(document).height(); //内容高度
-					console.log("滚动高度:" + scroH);
-					console.log("可见高度 :" + viewH);
-					console.log("内容高度:" + contentH);
-					// if (scroH > 100) { //距离顶部大于100px时
-					// 	// $("#div1").fadeToggle("slow");
-					// 	$("#div1").animate({"margin-top":"20px"},1000) 
-					// }
-					// if (scroH >=800){
-					// 	$("#div2").animate({"margin-top":"20px"},1000) 
-					// 	$("#advantage").animate({"margin-top":"20px"},1000) 
-					// }
-					// if (contentH - (scroH + viewH) <= 100) { //距离底部高度小于100px
-
-					// }
-					// if (contentH = (scroH + viewH)) { //滚动条滑到底部啦
-
-					// }
-
-				});
-
-				$('#menu1').navfix(0, 999);
-
-			});
-		</script>
+		
 	</head>
 	<body>
 		<div id="homepage">
@@ -281,9 +166,9 @@
 			<!--  图片轮播 -->
 			<div class="banner" id="b06">
 				<ul>
-					<li><img class="sliderimg" src="img/index/20170330104014152.jpg" alt="" width="100%" height="800px"></li>
-					<li><img class="sliderimg" src="img/index/20170220131910352.jpg" alt="" width="100%" height="800px"></li>
-					<li><img class="sliderimg" src="img/index/20170216171204147.jpg" alt="" width="100%" height="800px"></li>
+					<li v-for="item in fileList">
+						<img class="sliderimg" :src="item.url" width="100%" height="800px"/>
+					</li>
 				</ul>
 				<a href="javascript:void(0);" class="unslider-arrow06 prev"><img class="arrow" id="al" src="img/arrowl.png" alt="prev"
 					 width="20" height="35"></a>
@@ -364,66 +249,10 @@
 					<img class="mr_frBtnL prev" src="img/client/sprite-l.png" />
 					<div class="mr_frUl">
 						<ul id="mr_fu">
-							<li><a href="">
-									<img src="img/client/1.jpg" />
-								</a>
+							<li v-for="item in fileList1">
+								<img :src="item.url" />
 							</li>
-							<li><a href="">
-									<img src="img/client/2.jpg" />
-								</a>
-							</li>
-							<li><a href="">
-									<img src="img/client/3.jpg" />
-								</a>
-							</li>
-							<!-- <li><a href="">
-									<img src="img/client/4.jpg" />
-								</a>
-							</li>
-							<li><a href="">
-									<img src="img/client/5.jpg" />
-								</a>
-							</li>
-							<li><a href="">
-									<img src="img/client/6.jpg" />
-								</a>
-							</li>
-							<li><a href="">
-									<img src="img/client/7.jpg" />
-								</a>
-							</li>
-							<li><a href="">
-									<img src="img/client/8.jpg" />
-								</a>
-							</li>
-							<li><a href="">
-									<img src="img/client/9.jpg" />
-								</a>
-							</li>
-							<li><a href="">
-									<img src="img/client/10.jpg" />
-								</a>
-							</li>
-							<li><a href="">
-									<img src="img/client/11.jpg" />
-								</a>
-							</li>
-							<li><a href="">
-									<img src="img/client/12.jpg" />
-								</a>
-							</li> -->
-							<li><a href="">
-									<img src="img/client/13.jpg" />
-								</a>
-							</li>
-							<li><a href="">
-									<img src="img/client/14.jpg" />
-								</a>
-							</li>
-							<li><a href="">
-									<img src="img/client/15.jpg" />
-								</a>
-							</li>
+							
 						</ul>
 					</div>
 					<img class="mr_frBtnR next" src="img/client/sprite-r.png" />
@@ -464,11 +293,47 @@
 					address: "",
 					mail: "",
 					fax: "",
+					fileList:[],
+					fileList1:[]
 				},
 				mounted() {
 					this.getContact();
+					this.getPicture(1);
+					this.getPicture(2);
 				},
 				methods: {
+					getPicture(type) {
+						axios.post("/lezhi/homepage/listPicture", {
+							type: type
+						}).then((response) => {
+					
+							
+							if (response.data.data != null) {
+					
+								var data = response.data.data;
+								if (type == 1) {
+									for (var i = 0; i < data.length; i++) {
+										var pic = {};
+										pic.url = data[i].url;
+										pic.name = data[i].name;
+										this.fileList.push(pic);
+									}
+								} else if (type == 2) {
+									for (var i = 0; i < data.length; i++) {
+										var pic = {};
+										pic.url = data[i].url;
+										pic.name = data[i].name;
+										this.fileList1.push(pic);
+									}
+								}
+					
+							} else {
+					
+							}
+						}).catch((response) => {
+							console.log("错误" + response)
+						});
+					},
 					getContact: function() {
 						axios.post("/lezhi/contact/getContact", {
 
@@ -498,6 +363,122 @@
 						});
 					},
 				}
+			});
+		</script>
+		<script type="text/javascript" language="javascript">
+			$(window).resize(function() {
+				imgReload();
+			});
+		
+			function imgReload() {
+				var imgHeight = 0;
+				var wtmp = $("body").width();
+				$("#b06 ul li").each(function() {
+					$(this).css({
+						width: wtmp + "px"
+					});
+				});
+				$(".sliderimg").each(function() {
+					$(this).css({
+						width: wtmp + "px"
+					});
+					imgHeight = $(this).height();
+				});
+			}
+		
+			$(document).ready(function(e) {
+				imgReload();
+				var unslider06 = $('#b06').unslider({
+						dots: true,
+						fluid: true,
+						speed: 2000,
+						delay: 2000
+					}),
+					data06 = unslider06.data('unslider');
+				$('.unslider-arrow06').click(function() {
+					var fn = this.className.split(' ')[1];
+					data06[fn]();
+				});
+		
+				$("#menu li").on('mouseover', function() {
+					// $(this).css("border-bottom", "2px solid #5A5A5A");
+					$(this).css("background-color", "#156cfd");
+					$(this).find("a").attr("class", "ahover");
+				}).mouseout(function() {
+					// $(this).css("border-bottom", "2px solid rgb(0,0,0,0)");
+					$(this).css("background-color", "white");
+					$(this).find("a").attr("class", "hover");
+				});
+		
+				$('#owl-demo').owlCarousel({
+					navigation: true,
+					navigationText: ["上一个", "下一个"]
+				});
+		
+				/* 图片滚动效果 */
+				$(".mr_frbox").slide({
+					titCell: "",
+					mainCell: ".mr_frUl ul",
+					autoPage: true,
+					effect: "leftLoop",
+					autoPlay: true,
+					vis: 5
+				});
+				$(".mr_frBtnL").on('mouseover', function() {
+					$(this).css("opacity", "0.3");
+				}).mouseout(function() {
+					$(this).css("opacity", "0.2");
+				});
+				$(".mr_frBtnR").on('mouseover', function() {
+					$(this).css("opacity", "0.3");
+				}).mouseout(function() {
+					$(this).css("opacity", "0.2");
+				});
+		
+		
+				$("#product img").each(function() {
+		
+					$(this).on('mouseover', function() {
+						$(this).animate({
+							width: "360px",
+							height: "260px"
+						});
+						// $(this).animate({height:"270px"});
+					}).mouseout(function() {
+						$(this).animate({
+							width: "350px",
+							height: "250px"
+						});
+						// $(this).animate({height:"250px"});
+					});
+				});
+		
+		// 		$(document).scroll(function() {
+		// 			var scroH = $(document).scrollTop(); // 滚动高度
+		// 			var viewH = $(window).height(); // 可见高度 
+		// 			var contentH = $(document).height(); //内容高度
+		// 			console.log("滚动高度:" + scroH);
+		// 			console.log("可见高度 :" + viewH);
+		// 			console.log("内容高度:" + contentH);
+		// 			// if (scroH > 100) { //距离顶部大于100px时
+		// 			// 	// $("#div1").fadeToggle("slow");
+		// 			// 	$("#div1").animate({"margin-top":"20px"},1000) 
+		// 			// }
+		// 			// if (scroH >=800){
+		// 			// 	$("#div2").animate({"margin-top":"20px"},1000) 
+		// 			// 	$("#advantage").animate({"margin-top":"20px"},1000) 
+		// 			// }
+		// 			// if (contentH - (scroH + viewH) <= 100) { //距离底部高度小于100px
+		
+		// 			// }
+		// 			// if (contentH = (scroH + viewH)) { //滚动条滑到底部啦
+		
+		// 			// }
+		
+		// 		});
+		
+				$('#menu1').navfix(0, 999);
+		
 			});
 		</script>
 	</body>

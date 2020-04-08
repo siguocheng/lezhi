@@ -7,9 +7,19 @@ public class ProductDto {
 	private Integer pageNum;
 	private Integer pageSize;
 	private Integer startRow;
+	private Integer isHomePage;
 	
 	
-	 /**
+	
+	 public Integer getIsHomePage() {
+		return isHomePage;
+	}
+
+	public void setIsHomePage(Integer isHomePage) {
+		this.isHomePage = isHomePage;
+	}
+
+	/**
      * 
      */
     private Integer id;

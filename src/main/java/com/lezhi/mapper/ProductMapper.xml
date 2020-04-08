@@ -37,6 +37,9 @@
     <if test="productTitle != null">
     	and product_title like CONCAT('%','${productTitle}','%' )  
     </if>
+    <if test="isHomePage != null">
+    	and is_home_page = #{isHomePage}
+    </if>
     <!-- limit #{startRow},#{pageSize}; -->
   </select>
   

@@ -168,7 +168,7 @@
 							if (response.data.data != null) {
 
 								var data = response.data.data;
-								if (this.type == 1) {
+								if (type == 1) {
 									for (var i = 0; i < data.length; i++) {
 										var pic = {};
 										pic.url = data[i].url;
@@ -177,7 +177,7 @@
 										pic.id = data[i].id;
 										this.urls.push(pic);
 									}
-								} else if (this.type == 2) {
+								} else if (type == 2) {
 									for (var i = 0; i < data.length; i++) {
 										var pic = {};
 										pic.url = data[i].url;
