@@ -1,30 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<script src="js/jquery.js"></script>
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/unslider.min.js"></script>
-		<script src="js/owl.carousel.min.js"></script>
-		<script src="js/jquery.SuperSlide2.js"></script>
-		<script src="js/jquery-migrate-1.2.1.js"></script>
-		<script src="js/navfix.js"></script>
-		<link rel="stylesheet" href="package/css/swiper.min.css">
-		<link href="css/owl/owl.carousel.css" rel="stylesheet">
-		<link href="css/owl/owl.theme.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/main.css">
+		<title>浙江乐志电子科技有限公司</title>
 		<link rel="shortcut icon" href="img/zhele.ico" type="image/x-icon">
+		<link rel="stylesheet" href="css/main.css">
 		<script src="js/vue.js"></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		<title>浙江乐志电子科技有限公司</title>
-		<style type="text/css">
-			/* #aa{
+		<!-- Link Swiper's CSS -->
+		<link rel="stylesheet" href="package/css/swiper.min.css">
+		<script src="js/jquery.js"></script>
+		<style>
+			.bigPic {
 				position: relative;
-				height: 100%;
-			} */
+
+			}
 
 			.swiper-container {
-
 				width: 100%;
 				height: 100%;
 			}
@@ -49,56 +41,10 @@
 				align-items: center;
 			}
 
-			.friend {
-				height: 200px;
-				margin: 0 auto;
-				overflow: hidden;
-				width: 1300px;
-			}
-
-			.mr_frbox {
-				height: 100px;
-				padding: 50px 0px 0px;
-			}
-
-			.mr_frBtnL {
-				cursor: pointer;
-				display: inline;
-				float: left;
-				height: 46px;
-				margin: 25px 10px 0 0;
-				width: 28px;
-				opacity: 0.2;
-			}
-
-			.mr_frUl {
-				float: left;
-				height: 100px;
-				width: 1200px;
-				margin-left: 10px;
-			}
-
-			.mr_frBtnR {
-				float: right;
-				margin-top: 25px;
-				cursor: pointer;
-				width: 28px;
-				height: 46px;
-				opacity: 0.2;
-			}
-
-			.mr_frUl ul li {
-				display: inline;
-				float: left;
-				/*height:389px;*/
-				/* width:300px; */
-				overflow: hidden;
+			.partner {
 				position: relative;
-			}
-
-			.mr_frUl ul li a img {
-				/*display:block;*/
-				/* width:50%; */
+				width: 1300px;
+				margin: 0 auto;
 			}
 
 			.product {
@@ -110,8 +56,14 @@
 				border: 1px solid #dddddd;
 				padding: 10px;
 			}
-		</style>
 
+			.worditem {
+				background-color: #cccccc;
+				height: 2px;
+				width: 100px;
+				margin-top: 20px;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="homepage">
@@ -135,12 +87,11 @@
 					</div>
 				</div>
 			</div>
-
-			<!--  图片轮播 -->
-			<div id="aa">
-				<div class="swiper-container">
+			<!-- Swiper -->
+			<div class="bigPic" id="bigPic">
+				<div class="swiper-container" id="bigPicSwiper">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide" v-for="item in fileList"><img class="sliderimg" :src="item.url" width="100%" height="800px" /></div>
+						<div class="swiper-slide" v-for="item in fileList"><img :src="item.url" height="800px" width="100%" /></div>
 					</div>
 					<!-- Add Arrows -->
 					<div class="swiper-button-next"></div>
@@ -150,7 +101,7 @@
 			<div id="div1" class="title">
 				<strong>推荐产品</strong>
 			</div>
-			<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
+			<div class="container worditem">
 			</div>
 			<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;   text-align: center;">
 				Product series
@@ -195,7 +146,7 @@
 				<div class="title">
 					<strong>我们的优势</strong>
 				</div>
-				<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px; ">
+				<div class="container worditem">
 				</div>
 				<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;text-align: center;">
 					Our Advantages
@@ -210,23 +161,19 @@
 			<div id="div2" class="title" style="margin-top: 250px;">
 				<strong>我们的客户</strong>
 			</div>
-			<div style="margin:0 auto;width: 1200px;background-color: #cccccc;height: 2px;width: 70px;">
+			<div class="container worditem">
 			</div>
 			<div style="margin-top: 10px;  font-size:18px;font-family:微软雅黑;color:rgb(67, 67, 67);height: 30px;text-align: center;">
 				Cooperative partner
 			</div>
-			<div class="friend">
-				<div class="mr_frbox">
-					<img class="mr_frBtnL prev" src="img/client/sprite-l.png" />
-					<div class="mr_frUl">
-						<ul id="mr_fu">
-							<li v-for="item in fileList1">
-								<img :src="item.url" />
-							</li>
-
-						</ul>
+			<div class="partner" id="partner">
+				<div class="swiper-container" id="partnerPicSwiper">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide" v-for="item in fileList1"><img :src="item.url" height="50px" width="100px" /></div>
 					</div>
-					<img class="mr_frBtnR next" src="img/client/sprite-r.png" />
+					<!-- Add Arrows -->
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
 				</div>
 			</div>
 			<!-- 联系我们 -->
@@ -254,8 +201,11 @@
 				</div>
 			</div>
 		</div>
+		<!-- Swiper JS -->
 		<script src="package/js/swiper.min.js"></script>
-		<script type="text/javascript">
+
+		<!-- Initialize Swiper -->
+		<script>
 			var vm = new Vue({
 				el: "#homepage",
 				data: {
@@ -266,14 +216,49 @@
 					mail: "",
 					fax: "",
 					fileList: [],
-					fileList1: []
+					fileList1: [],
+					list: ['img/index/20170216171204147.jpg', 'img/index/20170220131910352.jpg', 'img/index/20170330104014152.jpg']
+				},
+				created() {
+					this.getPicture(1);
+					this.getPicture(2);
+					this.initSwiper();
+
 				},
 				mounted() {
 					this.getContact();
-					this.getPicture(1);
-					this.getPicture(2);
+
 				},
 				methods: {
+					initSwiper() {
+						setTimeout(() => {
+							var swiper = new Swiper('#bigPicSwiper', {
+								autoplay: true,
+								loop: true,
+								observer: true,
+								observeParents: true,
+								navigation: {
+									nextEl: '.swiper-button-next',
+									prevEl: '.swiper-button-prev',
+								},
+							});
+						}, 300);
+						setTimeout(() => {
+							var swiper = new Swiper('#partnerPicSwiper', {
+								slidesPerView: 7,
+								centeredSlides: true,
+								autoplay: true,
+								loop: true,
+								observer: true,
+								observeParents: true,
+								navigation: {
+									nextEl: '.swiper-button-next',
+									prevEl: '.swiper-button-prev',
+								},
+							});
+						}, 300);
+					},
+
 					getPicture(type) {
 						axios.post("/lezhi/homepage/listPicture", {
 							type: type
@@ -294,6 +279,7 @@
 										pic.name = data[i].name;
 										this.fileList.push(pic);
 									}
+
 								} else if (type == 2) {
 									for (var i = 0; i < data.length; i++) {
 										var pic = {};
@@ -340,51 +326,8 @@
 					},
 				}
 			});
-			var swiper = new Swiper('.swiper-container', {
-				// navigation: {
-			 //        nextEl: '.swiper-button-next',
-			 //        prevEl: '.swiper-button-prev',
-			 //      },
-				autoplay: true,
-				loop: true,
-				
-			});
-		</script>
-		<script type="text/javascript" language="javascript">
-			$(window).resize(function() {
-				//imgReload();
-			});
-
-			function imgReload() {
-				var imgHeight = 0;
-				var wtmp = $("body").width();
-				$("#b06 ul li").each(function() {
-					$(this).css({
-						width: wtmp + "px"
-					});
-				});
-				$(".sliderimg").each(function() {
-					$(this).css({
-						width: wtmp + "px"
-					});
-					imgHeight = $(this).height();
-				});
-			}
 
 			$(document).ready(function(e) {
-				imgReload();
-				var unslider06 = $('#b06').unslider({
-						dots: true,
-						fluid: true,
-						speed: 2000,
-						delay: 2000
-					}),
-					data06 = unslider06.data('unslider');
-				$('.unslider-arrow06').click(function() {
-					var fn = this.className.split(' ')[1];
-					data06[fn]();
-				});
-
 				$("#menu li").on('mouseover', function() {
 					// $(this).css("border-bottom", "2px solid #5A5A5A");
 					$(this).css("background-color", "#156cfd");
@@ -394,76 +337,6 @@
 					$(this).css("background-color", "white");
 					$(this).find("a").attr("class", "hover");
 				});
-
-				$('#owl-demo').owlCarousel({
-					navigation: true,
-					navigationText: ["上一个", "下一个"]
-				});
-
-				/* 图片滚动效果 */
-				$(".mr_frbox").slide({
-					titCell: "",
-					mainCell: ".mr_frUl ul",
-					autoPage: true,
-					effect: "leftLoop",
-					autoPlay: true,
-					vis: 5
-				});
-				$(".mr_frBtnL").on('mouseover', function() {
-					$(this).css("opacity", "0.3");
-				}).mouseout(function() {
-					$(this).css("opacity", "0.2");
-				});
-				$(".mr_frBtnR").on('mouseover', function() {
-					$(this).css("opacity", "0.3");
-				}).mouseout(function() {
-					$(this).css("opacity", "0.2");
-				});
-
-
-				$("#product img").each(function() {
-
-					$(this).on('mouseover', function() {
-						$(this).animate({
-							width: "360px",
-							height: "260px"
-						});
-						// $(this).animate({height:"270px"});
-					}).mouseout(function() {
-						$(this).animate({
-							width: "350px",
-							height: "250px"
-						});
-						// $(this).animate({height:"250px"});
-					});
-				});
-
-				// 		$(document).scroll(function() {
-				// 			var scroH = $(document).scrollTop(); // 滚动高度
-				// 			var viewH = $(window).height(); // 可见高度 
-				// 			var contentH = $(document).height(); //内容高度
-				// 			console.log("滚动高度:" + scroH);
-				// 			console.log("可见高度 :" + viewH);
-				// 			console.log("内容高度:" + contentH);
-				// 			// if (scroH > 100) { //距离顶部大于100px时
-				// 			// 	// $("#div1").fadeToggle("slow");
-				// 			// 	$("#div1").animate({"margin-top":"20px"},1000) 
-				// 			// }
-				// 			// if (scroH >=800){
-				// 			// 	$("#div2").animate({"margin-top":"20px"},1000) 
-				// 			// 	$("#advantage").animate({"margin-top":"20px"},1000) 
-				// 			// }
-				// 			// if (contentH - (scroH + viewH) <= 100) { //距离底部高度小于100px
-
-				// 			// }
-				// 			// if (contentH = (scroH + viewH)) { //滚动条滑到底部啦
-
-				// 			// }
-
-				// 		});
-
-				$('#menu1').navfix(0, 999);
-
 			});
 		</script>
 	</body>
