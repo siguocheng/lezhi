@@ -14,11 +14,12 @@
 		<link href="css/owl/owl.theme.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="shortcut icon" href="img/zhele.ico" type="image/x-icon">
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<title>产品中心</title>
 		<style type="text/css">
 			.product {
 				float: left;
-			
+
 				width: 358px;
 				height: 250px;
 				margin: 10px;
@@ -26,7 +27,7 @@
 				padding: 10px;
 			}
 		</style>
-		
+
 		<script type="text/javascript" language="javascript">
 			$(document).ready(function(e) {
 				$("#menu li").on('mouseover', function() {
@@ -38,7 +39,7 @@
 					$(this).css("background-color", "white");
 					$(this).find("a").attr("class", "hover");
 				});
-				$('#menu1').navfix(0,999);
+				$('#menu1').navfix(0, 999);
 			});
 		</script>
 	</head>
@@ -46,7 +47,7 @@
 		<div id="productDetail">
 			<!-- 菜单 -->
 			<div id="menu1" style="margin:0 auto;width: 100%;background-color: white;position:relative; z-index:99; ">
-				<div  style="margin:0 auto;width: 1200px;">
+				<div style="margin:0 auto;width: 1200px;">
 					<div style="float: left;margin-top: 10px;margin-left: 30px;">
 						<a href=""><img src="img/logo/logo2.jpg" width="200px" height="55px" />
 						</a>
@@ -65,7 +66,7 @@
 				</div>
 			</div>
 			<div>
-				<img src="img/index/20170330104014152.jpg" width="100%" height="400px"/>
+				<img src="img/index/20170330104014152.jpg" width="100%" height="400px" />
 			</div>
 			<!-- <div id="div1" style="margin:0 auto;width:100%;background-color: rgb(244, 244, 244);height: 40px; 
 			position: relative;overflow: auto;text-align: center;line-height: 40px;font-size: 16px;">
@@ -73,43 +74,40 @@
 					<input type="text"  />
 				</div>
 			</div> -->
-			<div style="margin: 0 auto;width: 1200px;margin-bottom: 60px;">
-					<div>
-						<input id="btnSearch" type="button" style="width: 100px;" class="searchbox_btn" value="返回产品中心"/>
-					</div>
+			<!-- <div style="margin: 0 auto;width: 1200px;margin-bottom: 60px;">
+				<div>
+					<input id="btnSearch" type="button" style="width: 100px;" class="searchbox_btn" value="返回产品中心" />
 				</div>
+			</div> -->
 			<div style="margin: 0 auto;width: 1200px;border:1px solid #ddd;height: 700px;margin-top: 50px">
 				<div style="text-align: center;font-family: 微软雅黑;font-size: 20px;margin-top: 20px;margin-bottom: 30px;">
-					高压动力线束
+					{{product.productName}}
 				</div>
 				<div class="container">
 					<div style=" text-align: center;">
-						<img src="img/pr001.jpeg" width="350px" height="250px"/>
+						<img :src="product.productPic" width="350px" height="250px" />
 					</div>
 				</div>
 				<div style="margin: 0 auto;width: 500px;height: 200px;">
 					<div style=" text-align: center;float: left;border: 1px solid #ddd;margin: 10px;">
-						<img src="img/pr001.jpeg" width="100px" height="90px"/>
+						<img :src="product.productPic" width="100px" height="90px" />
 					</div>
-					<div style=" text-align: center;float: left;border: 1px solid #ddd;margin: 10px;">
-						<img src="img/pr001.jpeg" width="100px" height="90px"/>
+					<div style=" text-align: center;float: left;border: 1px solid #ddd;margin: 10px;" v-if="product.productPic1 != null && product.productPic1 != ''">
+						<img :src="product.productPic1" width="100px" height="90px" />
 					</div>
-					<div style=" text-align: center;float: left;border: 1px solid #ddd;margin: 10px;">
-						<img src="img/pr001.jpeg" width="100px" height="90px"/>
+					<div style=" text-align: center;float: left;border: 1px solid #ddd;margin: 10px;" v-if="product.productPic2 != null && product.productPic2 != ''">
+						<img :src="product.productPic2" width="100px" height="90px" />
 					</div>
-					<div style=" text-align: center;float: left;border: 1px solid #ddd;margin: 10px;">
-						<img src="img/pr001.jpeg" width="100px" height="90px"/>
+					<div style=" text-align: center;float: left;border: 1px solid #ddd;margin: 10px;" v-if="product.productPic3 != null && product.productPic3 != ''">
+						<img :src="product.productPic3" width="100px" height="90px" />
 					</div>
 				</div>
-				
+
 				<div style="margin-left: 200px;font-family: 微软雅黑;font-size: 20px;">
-					xxxxxxxxxxxxxxxxxxxxxxxxxxx
-					xxxxxxxxxxxxxxxxxxxxxxxxxxx
-					xxxxxxxxxxxxxxxxxxxxxxxxxxx
-					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+					{{product.productDetail}}
 				</div>
 			</div>
-			
+
 			<div style="width: 100%;background-color: #1A1A1A;">
 				<div id="contactPic" style="margin: 0 auto; width: 1200px;font-family: 微软雅黑;height: 60px;">
 					<!-- <div class="pic"><img src="img/pic/phone.png" width="130px" height="130px"/></div>
@@ -122,7 +120,7 @@
 					<div class="content">传真：0571-87425558</div>
 				</div>
 				<div style="margin: 0 auto;width: 1200px;font-size: 15px;text-align: center;color: #FFFFFF;line-height: 50px;">
-					Copyright © 2019-2020,www.xxxxxx.com,All rights reserved  沪ICP备XXXXXX号
+					Copyright © 2019-2020,www.xxxxxx.com,All rights reserved 沪ICP备XXXXXX号
 				</div>
 			</div>
 		</div>
@@ -136,26 +134,63 @@
 					address: "",
 					mail: "",
 					fax: "",
+					id: null,
+					product: {}
 				},
 				mounted() {
 					this.getContact();
+
+					var query = window.location.search.substring(1);
+
+					var vars = query.split("&");
+					for (var i = 0; i < vars.length; i++) {
+						var pair = vars[i].split("=");
+						if (pair[0] == 'id') {
+							this.id = pair[1];
+						}
+					}
+					this.getProduct();
 				},
 				methods: {
-					getContact: function() {
-						axios.post("/lezhi/contact/getContact", {
-		
+					getProduct() {
+
+						axios.post("/lezhi/product/productDetail", {
+							id: this.id
 						}, {
 							headers: {
 								'X-Custom-Header': 'lezhi'
 							}
 						}).then((response) => {
-		
 							if (response.data.code == -1) {
-		
+
 								window.location = "login.html";
 								return;
 							}
-		
+							debugger;
+							var data = response.data.data;
+							if (data != null) {
+								this.product = data;
+							}
+
+						}).catch((response) => {
+							console.log("错误" + response)
+						});
+					},
+					getContact: function() {
+						axios.post("/lezhi/contact/getContact", {
+
+						}, {
+							headers: {
+								'X-Custom-Header': 'lezhi'
+							}
+						}).then((response) => {
+
+							if (response.data.code == -1) {
+
+								window.location = "login.html";
+								return;
+							}
+
 							if (response.data.data != null) {
 								var data = response.data.data;
 								this.name = data.name;
@@ -164,7 +199,7 @@
 								this.address = data.address;
 								this.fax = data.fax;
 							}
-		
+
 						}).catch((response) => {
 							console.log("错误" + response)
 						});

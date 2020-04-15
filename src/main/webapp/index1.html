@@ -111,36 +111,12 @@
 			</div>
 
 			<div id="product" class="container" style="height:600px">
-				<div class="product">
-					<a href="">
-						<img id="img1" src="img/pr001.jpeg" width="350px" height="250px" />
+				<div class="product" v-for="product in productList">
+					<a href="javascript:void(0)" @click="producDetail(product.id)">
+						<img id="img1" :src="product.productPic" width="350px" height="250px" />
 					</a>
 				</div>
-				<div class="product">
-					<a href="">
-						<img src="img/pr001.jpeg" width="350px" height="250px" />
-					</a>
-				</div>
-				<div class="product">
-					<a href="">
-						<img src="img/pr001.jpeg" width="350px" height="250px" />
-					</a>
-				</div>
-				<div class="product">
-					<a href="">
-						<img src="img/pr001.jpeg" width="350px" height="250px" />
-					</a>
-				</div>
-				<div class="product">
-					<a href="">
-						<img src="img/pr001.jpeg" width="350px" height="250px" />
-					</a>
-				</div>
-				<div class="product">
-					<a href="">
-						<img src="img/pr001.jpeg" width="350px" height="250px" />
-					</a>
-				</div>
+				
 			</div>
 			<div id="advantage" class="container">
 				<div class="title">
@@ -217,7 +193,7 @@
 					fax: "",
 					fileList: [],
 					fileList1: [],
-					list: ['img/index/20170216171204147.jpg', 'img/index/20170220131910352.jpg', 'img/index/20170330104014152.jpg']
+					productList:[]
 				},
 				created() {
 					this.getPicture(1);
@@ -227,9 +203,35 @@
 				},
 				mounted() {
 					this.getContact();
-
+					this.getProducts();
 				},
 				methods: {
+					producDetail(id){
+						console.log(id);
+						var url = "product_detail.html?id=" + id;
+						window.open(url,"_blank");
+					},
+					getProducts(){
+						axios.post("/lezhi/product/listProduct", {
+							isHomePage: 1
+						}, {
+							headers: {
+								'X-Custom-Header': 'lezhi'
+							}
+						}).then((response) => {
+						
+						
+							if (response.data.data != null) {
+						
+								this.productList = response.data.data;
+								console.log(this.productList);
+							} else {
+						
+							}
+						}).catch((response) => {
+							console.log("错误" + response)
+						});
+					},
 					initSwiper() {
 						setTimeout(() => {
 							var swiper = new Swiper('#bigPicSwiper', {

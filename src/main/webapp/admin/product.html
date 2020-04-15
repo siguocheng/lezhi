@@ -33,7 +33,7 @@
 				</el-menu>
 			</div>
 
-			<div class="fl" style="width: 1000px;">
+			<div class="fl" style="width: 1200px;">
 				<div class="fr" style="padding-top: 60px;padding-bottom: 60px;">
 					<el-input style="width: 200px;" placeholder="请输入内容" v-model="productName" clearable>
 					</el-input>
@@ -50,6 +50,8 @@
 							<template slot-scope="scope">
 								<img :src="scope.row.productPic" width="50px" height="50px" v-if="scope.row.productPic != ''" />
 							</template>
+						</el-table-column>
+						<el-table-column prop="isHomePage" label="是否显示在主页" width="220">
 						</el-table-column>
 						<el-table-column prop="id" label="id" v-if="false">
 						</el-table-column>
@@ -126,6 +128,13 @@
 								window.location = "login.html";
 							} else {
 								this.tableData = response.data.data;
+								for (var i =0;i<this.tableData.length;i++){
+									if (this.tableData[i].isHomePage == 1){
+										this.tableData[i].isHomePage='是';
+									} else{
+										this.tableData[i].isHomePage='否';
+									}
+								}
 								this.total = response.data.total;
 							}
 

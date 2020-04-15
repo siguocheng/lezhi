@@ -10,7 +10,6 @@ public class ProductDto {
 	private Integer isHomePage;
 	
 	
-	
 	 public Integer getIsHomePage() {
 		return isHomePage;
 	}

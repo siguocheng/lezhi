@@ -98,68 +98,23 @@
 				</div>
 				<div style="margin: 0 auto;width: 1200px;margin-bottom: 60px;">
 					<div>
-						<input id="btnSearch" type="button" class="searchbox_btn" value="搜索" />
+						<input id="btnSearch" type="button" class="searchbox_btn" value="搜索" @click="current_change()"/>
 					</div>
 					<div style="float: right;">
-						<input id="txtSearch" type="text" value="请输入产品关键字" style="text-align: left;color: #666; padding-left: 5px;padding-right: 5px;background-color: #ffffff;width:300px;font-size: 12px;font-family:Microsoft YaHei;line-height: 36px;border:#156cfd 2px solid;" />
+						<input id="txtSearch" type="text" value="请输入产品关键字" v-model="productName" 
+						style="text-align: left;color: #666; padding-left: 5px;padding-right: 5px;background-color: #ffffff;width:300px;font-size: 12px;font-family:Microsoft YaHei;line-height: 36px;border:#156cfd 2px solid;" />
 					</div>
 
 				</div>
 				<div id="product" style="margin:0 auto;width: 1200px;height:1050px">
-					<div class="product">
-						<a href="product_detail.html">
-							<img id="img1" src="img/pr001.jpeg" width="350px" height="250px" />
-						</a>
+					<div class="fl" style="width: 380px;" v-for="item in tableData">
+						<div class="product">
+							<a href="javascript:void(0)" @click="producDetail(item.id)">
+								<img id="img1" :src="item.productPic" width="350px" height="250px" />
+							</a>
+						</div>
+						<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">{{item.productName}}</div>
 					</div>
-					<div class="product">
-						<a href="product_detail.html">
-							<img src="img/pr001.jpeg" width="350px" height="250px" />
-						</a>
-					</div>
-					<div class="product">
-						<a href="product_detail.html">
-							<img src="img/pr001.jpeg" width="350px" height="250px" />
-						</a>
-					</div>
-					<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-					<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-					<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-					<div class="product">
-						<a href="product_detail.html">
-							<img src="img/pr001.jpeg" width="350px" height="250px" />
-						</a>
-					</div>
-					<div class="product">
-						<a href="product_detail.html">
-							<img src="img/pr001.jpeg" width="350px" height="250px" />
-						</a>
-					</div>
-					<div class="product">
-						<a href="product_detail.html">
-							<img src="img/pr001.jpeg" width="350px" height="250px" />
-						</a>
-					</div>
-					<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-					<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-					<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-					<div class="product">
-						<a href="">
-							<img src="img/pr001.jpeg" width="350px" height="250px" />
-						</a>
-					</div>
-					<div class="product">
-						<a href="product_detail.html">
-							<img src="img/pr001.jpeg" width="350px" height="250px" />
-						</a>
-					</div>
-					<div class="product">
-						<a href="product_detail.html">
-							<img src="img/pr001.jpeg" width="350px" height="250px" />
-						</a>
-					</div>
-					<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-					<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
-					<div style="float:left;width:399px;height:50px;font-size: 20px;text-align: center;line-height: 50px;">xxxxxxxxxxxxxx</div>
 				</div>
 				<div id="page" style="margin:0 auto;margin-bottom: 50px; width:1200px;text-align: center;">
 					<el-pagination background layout="prev, pager, next" :current-page.sync="page" :total="total" :page-size="pageSize"
@@ -187,36 +142,28 @@
 			var app = new Vue({
 				el: '#productList',
 				data: {
-					todos: [{
-							text: '汽车线束'
-						},
-						{
-							text: '家电线束'
-						},
-						{
-							text: '医疗线束'
-						}
-					],
-					page: 2,
-					total: 20,
+					// 联系信息
+					name: "",
+					phoneNumber: "",
+					address: "",
+					mail: "",
+					fax: "",
+					tableData: [],
+					page: 1,
+					total: 0,
 					pageSize: 10,
+					productName:null
 				},
-				created: {
-
-				},
+				
 				mounted() {
 					this.getContact();
+					this.current_change();
 				},
 				methods: {
-					current_change() {
-						axios.post("/lezhi/test", {
-							username: "water",
-							password: "123456"
-						}).then((response) => {
-							console.log("返回的值" + response.data)
-						}).catch((response) => {
-							console.log("错误" + response)
-						});
+					producDetail(id){
+						console.log(id);
+						var url = "product_detail.html?id=" + id;
+						window.open(url,"_blank");
 					},
 					getContact:function(){
 						axios.post("/lezhi/contact/getContact?", {
@@ -239,7 +186,29 @@
 						}).catch((response) => {
 							console.log("错误" + response)
 						});
-					}
+					},
+					current_change() {
+					
+						axios.post("/lezhi/product/listProduct", {
+							productName: this.productName,
+							pageNum: this.page,
+							pageSize: this.pageSize
+						}, {
+							headers: {
+								'X-Custom-Header': 'lezhi'
+							}
+						}).then((response) => {
+							if (response.data.code == -1) {
+								window.location = "login.html";
+							} else {
+								this.tableData = response.data.data;
+								this.total = response.data.total;
+							}
+					
+						}).catch((response) => {
+							console.log("错误" + response)
+						});
+					},
 				}
 			});
 		</script>

@@ -20,11 +20,12 @@
     <result column="product_pic_name2" jdbcType="VARCHAR" property="productPicName2" />
     <result column="product_pic_name3" jdbcType="VARCHAR" property="productPicName3" />
     <result column="product_pic_name4" jdbcType="VARCHAR" property="productPicName4" />
+    <result column="is_home_page" jdbcType="INTEGER" property="isHomePage" />
   </resultMap>
   <sql id="Base_Column_List">
     id, product_type, product_name, product_title, product_pic, product_pic1, product_pic2, 
     product_pic3, product_pic4, product_detail, is_deleted, gmt_create, gmt_modified, 
-    product_pic_name, product_pic_name1, product_pic_name2, product_pic_name3, product_pic_name4
+    product_pic_name, product_pic_name1, product_pic_name2, product_pic_name3, product_pic_name4,is_home_page
   </sql>
   <select id="listProduct" resultMap="BaseResultMap">
   	select 
@@ -41,6 +42,7 @@
     	and is_home_page = #{isHomePage}
     </if>
     <!-- limit #{startRow},#{pageSize}; -->
+    order by gmt_modified desc
   </select>
   
   <select id="countProduct" resultType="int">
@@ -133,6 +135,9 @@
       <if test="productPicName4 != null">
         product_pic_name4,
       </if>
+      <if test="isHomePage != null">
+        is_home_page,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productType != null">
@@ -185,6 +190,9 @@
       </if>
       <if test="productPicName4 != null">
         #{productPicName4,jdbcType=VARCHAR},
+      </if>
+      <if test="isHomePage != null">
+        #{isHomePage},
       </if>
     </trim>
   </insert>
@@ -241,6 +249,9 @@
       </if>
       <if test="productPicName4 != null">
         product_pic_name4 = #{productPicName4,jdbcType=VARCHAR},
+      </if>
+      <if test="isHomePage != null">
+        is_home_page = #{isHomePage},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

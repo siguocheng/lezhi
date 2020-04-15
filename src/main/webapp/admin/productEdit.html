@@ -50,6 +50,18 @@
 					</el-dialog>
 
 				</div>
+				<div>
+					<el-checkbox v-model="checked">是否主页显示</el-checkbox>
+				</div>
+				<div>
+					<el-input
+					  type="textarea"
+					  :autosize="{ minRows: 2, maxRows: 10}"
+					  placeholder="请输入产品描述"
+					  v-model="product.productDetail">
+					</el-input>
+					
+				</div>
 				<el-button type="primary" v-on:click="save()">保存</el-button>
 				<el-button type="primary" v-on:click="cancel()">取消</el-button>
 			</div>
@@ -68,7 +80,8 @@
 					urls: [],
 					picType: {
 						'picType': 3
-					}
+					},
+					checked:false,
 				},
 				created() {
 
@@ -112,7 +125,11 @@
 							this.$message.warning("请输入产品标题");
 							return;
 						}
-						debugger;
+						if (this.checked){
+							this.product.isHomePage = 1;
+						} else {
+							this.product.isHomePage = 0;
+						}
 
 						this.product.productPic = "";
 						this.product.productPic1 = "";
@@ -188,6 +205,11 @@
 							if (data != null) {
 								this.product = data;
 
+								if (data.isHomePage == 1){
+									this.checked=true;
+								} else {
+									this.checked=false;
+								}
 								if (data.productPic != '') {
 									var pic0 = {};
 

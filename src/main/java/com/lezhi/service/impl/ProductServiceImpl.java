@@ -27,7 +27,10 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> listProduct(ProductDto productDto) {
 
-		productDto.setStartRow((productDto.getPageNum() - 1) * productDto.getPageSize());
+		if (productDto.getPageNum() != null && productDto.getPageSize() != null) {
+			productDto.setStartRow((productDto.getPageNum() - 1) * productDto.getPageSize());
+		}
+		
 		return productMapper.listProduct(productDto);
 	}
 
@@ -36,7 +39,9 @@ public class ProductServiceImpl implements ProductService {
 		Product product=  new Product();
 		BeanUtils.copyProperties(productDto, product);
 		product.setIsDeleted(1);
-		product.setGmtCreate(new Date());
+		Date date =new Date();
+		product.setGmtCreate(date);
+		product.setGmtCreate(date);
 		return productMapper.insertSelective(product);
 	}
 
