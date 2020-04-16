@@ -71,14 +71,14 @@
 				margin: 10px;
 				border: 1px solid #dddddd;
 				padding: 10px;
+				
+				
 			}
-
-			.worditem {
-				background-color: #cccccc;
-				height: 2px;
-				width: 100px;
-				margin-top: 20px;
-			}
+			.product:hover {
+				box-shadow: 0 15px 30px rgba(0,0,0,.1);
+				transform: translate3d(0,-2px,0);
+			}	
+			
 		</style>
 	</head>
 	<body>
@@ -161,7 +161,7 @@
 			<div class="partner" id="partner">
 				<div class="swiper-container" id="partnerPicSwiper">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide" v-for="item in fileList1"><img :src="item.url" height="50px" width="100px" /></div>
+						<div class="swiper-slide" v-for="item in fileList1"><img :src="item.url" height="80px" width="100px" /></div>
 					</div>
 					<!-- Add Arrows -->
 					<div class="swiper-button-next"></div>

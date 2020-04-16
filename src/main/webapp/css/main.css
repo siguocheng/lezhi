@@ -1,7 +1,7 @@
-body { 
+body {
 	font-family: 'Raleway', Calibri, Arial, sans-serif, Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
 	margin: 0;
-	height:100%;
+	height: 100%;
 }
 
 html,
@@ -42,19 +42,22 @@ li {
 	display: list-item;
 	text-align: -webkit-match-parent;
 }
+
 .clear-float:after,
-.clear-float:before
-{
+.clear-float:before {
 	content: " ";
 	display: block;
 	clear: both;
 }
-.fl{
+
+.fl {
 	float: left;
 }
-.fr{
+
+.fr {
 	float: right;
 }
+
 .col-1,
 .col-2,
 .col-3,
@@ -63,43 +66,54 @@ li {
 .col-6,
 .col-7,
 .col-8,
-.col-9{
+.col-9 {
 	display: block;
 	position: relative;
 	min-height: 1px;
 }
-.col-1{
+
+.col-1 {
 	width: 10%;
 }
-.col-2{
+
+.col-2 {
 	width: 20%;
 }
-.col-3{
+
+.col-3 {
 	width: 30%;
 }
-.col-4{
+
+.col-4 {
 	width: 40%;
 }
-.col-5{
+
+.col-5 {
 	width: 50%;
 }
-.col-6{
+
+.col-6 {
 	width: 60%;
 }
-.col-7{
+
+.col-7 {
 	width: 70%;
 }
-.col-8{
+
+.col-8 {
 	width: 80%;
 }
-.col-9{
+
+.col-9 {
 	width: 90%;
 }
-.container{
+
+.container {
 	display: block;
 	margin: 0 auto;
 	max-width: 1200px;
 }
+
 .cssmenu>ul {
 	list-style-type: none;
 	margin: 0;
@@ -145,9 +159,16 @@ li {
 	text-decoration: none;
 
 }
-.title{
-	margin-top: 20px;  font-size:30px;font-family:微软雅黑;color:#516dff;height: 30px;   text-align: center;
+
+.title {
+	margin-top: 20px;
+	font-size: 30px;
+	font-family: 微软雅黑;
+	color: #516dff;
+	height: 30px;
+	text-align: center;
 }
+
 a {
 	text-decoration: none;
 }
@@ -185,13 +206,15 @@ strong {
 	font-size: 18px;
 	font-family: 微软雅黑;
 }
-#contactPic .pic{
+
+#contactPic .pic {
 	float: left;
 	width: 300px;
 	text-align: center;
 	margin-top: 20px;
 }
-#contactPic .content{
+
+#contactPic .content {
 	font-size: 17px;
 	text-align: center;
 	width: 300px;
@@ -200,4 +223,11 @@ strong {
 	float: left;
 	margin-top: 20px;
 	color: #FFFFFF;
+}
+
+.worditem {
+	background-color: #cccccc;
+	height: 2px;
+	width: 100px;
+	margin-top: 20px;
 }
