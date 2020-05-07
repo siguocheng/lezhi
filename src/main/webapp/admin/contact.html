@@ -18,23 +18,25 @@
 				width: 400px;
 				height: 60px;
 			}
-			
+			a{
+				color:white;
+			}
 		</style>
 	</head>
 	<body>
-		<div id="contact">
-			<div class="fl" style="width:15%;">
+		<div id="contact" style="height:100%">
+			<div class="fl" style="width:15%;background-color: #303239;color:#fff;height: 100%;">
 				<p style="font-size: 20px;text-align: center;padding-top: 30px;padding-bottom: 30px;">菜单</p>
-				<el-menu default-active="3" class="el-menu-vertical-demo">
-					<el-menu-item index="1">
-						<i class="el-icon-menu"></i>
+				<el-menu default-active="3" class="el-menu-vertical-demo" background-color="#303239" >
+					<el-menu-item index="1" style="padding-left:50px;font-size: 18px;">
+						<i class="el-icon-setting"></i>
 						<span slot="title"><a href="index.html">主页</a></span>
 					</el-menu-item>
-					<el-menu-item index="2">
+					<el-menu-item index="2" style="padding-left:50px;font-size: 18px;">
 						<i class="el-icon-menu"></i>
 						<span slot="title"><a href="product.html">产品</a></span>
 					</el-menu-item>
-					<el-menu-item index="3">
+					<el-menu-item index="3" style="padding-left:50px;font-size: 18px;">
 						<i class="el-icon-menu"></i>
 						<span slot="title"><a href="contact.html">联系我们</a></span>
 					</el-menu-item>
@@ -68,7 +70,7 @@
 						</span>
 					</div>
 					<div class="contactItem">
-						传真
+						传真：
 						<span>
 							<el-input v-model="fax" placeholder="请输入内容" style="width: 80%"></el-input>
 						</span>

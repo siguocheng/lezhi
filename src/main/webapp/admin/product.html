@@ -10,23 +10,28 @@
 		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 		<!-- 引入组件库 -->
 		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<style type="text/css">
+			a{
+				color:white;
+			}
+		</style>
 	</head>
 	<body>
 
-		<div id="productList">
+		<div id="productList" style="height:100%">
 		
-			<div class="fl" style="width:15%;">
+			<div class="fl" style="width:15%;background-color: #303239;color:#fff;height: 100%;">
 				<p style="font-size: 20px;text-align: center;padding-top: 30px;padding-bottom: 30px;">菜单</p>
-				<el-menu default-active="2" class="el-menu-vertical-demo">
-					<el-menu-item index="1">
-						<i class="el-icon-menu"></i>
+				<el-menu default-active="3" class="el-menu-vertical-demo" background-color="#303239" >
+					<el-menu-item index="1" style="padding-left:50px;font-size: 18px;">
+						<i class="el-icon-setting"></i>
 						<span slot="title"><a href="index.html">主页</a></span>
 					</el-menu-item>
-					<el-menu-item index="2">
+					<el-menu-item index="2" style="padding-left:50px;font-size: 18px;">
 						<i class="el-icon-menu"></i>
 						<span slot="title"><a href="product.html">产品</a></span>
 					</el-menu-item>
-					<el-menu-item index="3">
+					<el-menu-item index="3" style="padding-left:50px;font-size: 18px;">
 						<i class="el-icon-menu"></i>
 						<span slot="title"><a href="contact.html">联系我们</a></span>
 					</el-menu-item>
@@ -71,7 +76,17 @@
 					</el-pagination>
 				</div>
 			</div>
-
+			<!-- <el-dialog
+			  title="提示"
+			  :visible.sync="centerDialogVisible"
+			  width="30%"
+			  center>
+			  <span>需要注意的是内容是默认不居中的</span>
+			  <span slot="footer" class="dialog-footer">
+			    <el-button @click="centerDialogVisible = false">取 消</el-button>
+			    <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
+			  </span>
+			</el-dialog> -->
 		</div>
 		<script type="text/javascript">
 			var app = new Vue({
@@ -82,6 +97,7 @@
 					page: 1,
 					total: 0,
 					pageSize: 10,
+					centerDialogVisible:false,
 				},
 				created() {
 

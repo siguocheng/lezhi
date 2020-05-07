@@ -1,12 +1,12 @@
 body {
 	font-family: 'Raleway', Calibri, Arial, sans-serif, Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
 	margin: 0;
-	height: 100%;
+	
 }
 
 html,
 body {
-	-webkit-text-size-adjust: none;
+	height: 100%;
 }
 
 ol,
