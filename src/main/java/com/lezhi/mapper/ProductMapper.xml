@@ -11,7 +11,6 @@
     <result column="product_pic2" jdbcType="VARCHAR" property="productPic2" />
     <result column="product_pic3" jdbcType="VARCHAR" property="productPic3" />
     <result column="product_pic4" jdbcType="VARCHAR" property="productPic4" />
-    <result column="product_detail" jdbcType="NVARCHAR" property="productDetail" />
     <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
@@ -24,7 +23,7 @@
   </resultMap>
   <sql id="Base_Column_List">
     id, product_type, product_name, product_title, product_pic, product_pic1, product_pic2, 
-    product_pic3, product_pic4, product_detail, is_deleted, gmt_create, gmt_modified, 
+    product_pic3, product_pic4, is_deleted, gmt_create, gmt_modified, 
     product_pic_name, product_pic_name1, product_pic_name2, product_pic_name3, product_pic_name4,is_home_page
   </sql>
   <select id="listProduct" resultMap="BaseResultMap">

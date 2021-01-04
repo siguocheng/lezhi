@@ -21,7 +21,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.lezhi.entity.ResultBean;
 import com.lezhi.entity.User;
 
-@Component
+//@Component
 public class SessionFilter implements Filter {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SessionFilter.class);

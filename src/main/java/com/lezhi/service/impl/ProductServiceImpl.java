@@ -12,10 +12,12 @@ import com.lezhi.dto.ProductDto;
 import com.lezhi.entity.Product;
 import com.lezhi.service.ProductService;
 
+import javax.annotation.Resource;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
-	@Autowired
+	@Resource
 	ProductMapper productMapper;
 
 	@Override

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @ComponentScan(basePackages={"com.lezhi"})
-@MapperScan(basePackages = { "com.lezhi.dao"})
+@MapperScan("com.lezhi.dao")
 public class WebPortalApplication
 {
     public static void main( String[] args )
